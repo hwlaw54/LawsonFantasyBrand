@@ -131,6 +131,18 @@ node scripts/render.js flyer data/invitation.json --png --out local/renders
 anywhere public. Never commit the QR, a render containing it, or a data file
 referencing it. See `local/README.md`.
 
+If Henry supplies a **fresh QR screenshot** (after resetting the group link),
+run it through the cropper before use — a raw phone screenshot is mostly app
+chrome, and the code ends up too small to survive the downscaling that
+happens when an invitation gets texted:
+
+```bash
+npm install --no-save jsqr
+node scripts/crop-qr.js local/whatsapp-group-qr.png
+```
+
+It verifies the payload is unchanged before writing anything.
+
 Henry is the commissioner and writes in the first person as "the Commissioner"
 when the piece needs a byline.
 

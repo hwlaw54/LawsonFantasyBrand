@@ -147,6 +147,7 @@ https://raw.githubusercontent.com/hwlaw54/lawson-league-brand/main/assets/logo/p
 | `node scripts/build-logos.js` | Regenerate every SVG from the crest definition |
 | `node scripts/build-pngs.js` | Re-export the PNG ladder |
 | `node scripts/fetch-fonts.js` | Re-download the typefaces |
+| `node scripts/crop-qr.js <img>` | Crop a QR out of a screenshot, verifying it still decodes |
 
 Rendering needs Chrome or Edge installed. Set `LFF_BROWSER` if it isn't found
 automatically.
