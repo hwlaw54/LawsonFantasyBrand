@@ -1,0 +1,28 @@
+{
+  "_comment": "Example data for templates/commissioner-letter.html. Copy this, change the values, run: node scripts/render.js commissioner-letter data/your-file.json --out output. Fictional names throughout — for a real send with real names and real links, use a local-only data file instead (see local/README.md).",
+
+  "season_line": "2026 SEASON",
+  "greeting": "League,",
+
+  "thanks_body_html": "Congratulations again to Sofa Kings on last year's title — that was a season for the books. Looking forward to another great one.",
+  "lookahead_body_html": "Before we get 2026 on the calendar, a few things need your input.",
+
+  "topics": [
+    { "heading": "Are You In?", "body_html": "Let me know if you're back for another season, or if it's time to pass your spot along. Either way, I need to know before I finalize the field." },
+    { "heading": "Rule Changes", "body_html": "If something bugged you last year, or you've got ideas to make things better this year, I want to hear it — so we can bring it to the group." },
+    { "heading": "The Buy-In", "body_html": "It's been $25 for as long as anyone can remember. Tell me if it should stay, go up, or come down — I'll review everyone's input before setting it for the year." }
+  ],
+
+  "survey_url": "https://forms.example.com/replace-with-real-link",
+  "survey_cta": "Take the 2-Minute Survey",
+
+  "whatsapp_url": "https://chat.whatsapp.com/replace-with-real-invite",
+  "whatsapp_cta": "Join the WhatsApp Group",
+
+  "draft_note_html": "More on draft night — date, time, and format — as we get closer to kickoff.",
+
+  "closing_body_html": "Excited for what this season has in store. See you in the group chat.",
+  "sign_off": "— Alex, Commissioner",
+
+  "footer_line": "Lawson Family & Friends Fantasy League · Est. 2020"
+}

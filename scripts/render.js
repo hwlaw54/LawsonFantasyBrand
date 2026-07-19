@@ -115,13 +115,17 @@ function expandRepeats(html, data) {
 
 /**
  * `<!-- OPTIONAL:qr -->…<!-- /OPTIONAL:qr -->` keeps the block only when
- * data.qr_image exists. Used for the flyer's invitation QR, which is a
- * local-only asset most flyers won't carry.
+ * data.qr_image (or data.qr_url) exists. Started as image-only for the
+ * flyer's invitation QR; generalized to `_url` too so a letter can drop a
+ * "Join the WhatsApp Group" or "Take the Survey" button when no link was
+ * supplied, the same way an image-based block drops out.
  */
 function resolveOptionals(html, data) {
   const re = /[ \t]*<!--\s*OPTIONAL:(\w+)\s*(?:—[^>]*?)?-->([\s\S]*?)<!--\s*\/OPTIONAL:\1\s*-->\n?/g;
   return html.replace(re, (whole, name, block) => {
-    const key = Object.keys(data).find((k) => k.toLowerCase() === `${name}_image`);
+    const key = Object.keys(data).find(
+      (k) => k.toLowerCase() === `${name}_image` || k.toLowerCase() === `${name}_url`
+    );
     return key && data[key] ? block : '';
   });
 }

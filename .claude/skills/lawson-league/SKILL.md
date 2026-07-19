@@ -53,6 +53,7 @@ adding one rather than improvising a one-off that drifts from the system.
 | `awards` | End-of-season hardware | `example-awards.json` |
 | `season-wrap` | The long season-in-review | `example-season-wrap.json` |
 | `chat-card` | **Phone-sized cards for the group chat** | `example-chat-cards.json` |
+| `commissioner-letter` | Long-form note to the league — season kickoff, a mid-season check-in | `example-commissioner-letter.json` |
 
 ### Chat cards are the workhorse
 
@@ -106,12 +107,16 @@ every angle and nothing needs recounting.
 ## Local-only assets
 
 `local/` is **gitignored** and holds things that must not reach the public
-repo — currently `local/whatsapp-group-qr.png`, the league group-chat join
-code.
+repo — the league's WhatsApp group join code, and any data file that
+references it.
 
-A WhatsApp QR is a live credential, not a graphic: published publicly, anyone
-who finds the repo could join the family group chat, and it stays live in git
-history and caches even after deletion.
+A WhatsApp join code is a live credential, not a graphic or a piece of text:
+published publicly, anyone who finds the repo could join the family group
+chat, and it stays live in git history and caches even after deletion. That's
+true whether it's an image (`local/whatsapp-group-qr.png`) or a plain
+`https://chat.whatsapp.com/...` link — **treat the two identically.** Never
+put either one in `data/example-*.json`, `BRAND.md`, this file, or any other
+tracked path. Only in a file under `local/`.
 
 So when Henry asks for an invitation carrying the QR:
 
@@ -142,6 +147,26 @@ node scripts/crop-qr.js local/whatsapp-group-qr.png
 ```
 
 It verifies the payload is unchanged before writing anything.
+
+The same rule applies to the invite **link**, used by
+`templates/commissioner-letter.html`'s `OPTIONAL:whatsapp` block:
+
+```json
+{
+  "whatsapp_url": "https://chat.whatsapp.com/...",
+  "whatsapp_cta": "Join the WhatsApp Group"
+}
+```
+
+Real data for a real send (real names, real links) goes in its own file under
+`local/` — e.g. `local/season-kickoff-2026.json` — never in a template's
+public example data. Render to `local/renders/`, same as invitations.
+
+For an email-format asset (`commissioner-letter`, `email-newsletter`), the
+finished HTML is what actually gets sent — via a Gmail draft if the Gmail
+connector is available, created for Henry to review and send himself.
+**Never call a send action.** Creating a draft that goes to Henry's whole
+league is as far as this skill goes without his explicit go-ahead each time.
 
 Henry is the commissioner and writes in the first person as "the Commissioner"
 when the piece needs a byline.

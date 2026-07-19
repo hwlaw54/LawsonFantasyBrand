@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
+<title>A Note from the Commissioner</title>
+
+<!--
+  ===========================================================================
+  TEMPLATE · COMMISSIONER'S LETTER — EMAIL EDITION
+  ===========================================================================
+  LIGHT canvas, not the dark-navy full-bleed look the rest of the kit uses.
+  This is deliberate, not a downgrade — see the note below before "fixing"
+  it back to dark.
+
+  Same email-safe discipline as email-newsletter.html otherwise: tables for
+  layout, no external stylesheet, no CSS variables, literal hex, real font
+  fallbacks (Cinzel → Georgia, everything else → Arial), images by absolute
+  raw.githubusercontent.com URL.
+
+  WHY LIGHT, NOT DARK:
+  A full-bleed dark background with light text is the riskiest pattern in
+  HTML email. Two independent failure modes hit it:
+    1. Gmail's own compose/draft editor normalizes injected HTML into an
+       editable DOM and drops background-color from <body>/<table> wrappers
+       in that process — the text-level colors survive, the container colors
+       don't, so light text designed for a dark canvas strands itself on
+       Gmail's white compose paper. (First version of this template hit this
+       exact bug — pale cream headings on white, unreadable.)
+    2. Several clients' automatic dark-mode handling (Gmail's own dark theme
+       among them) applies heuristic color inversion to emails that don't
+       declare support, and a hand-tuned dark palette is exactly what those
+       heuristics mangle worst.
+  A light body with dark navy text is the "home turf" case: every client
+  handles it correctly, dark-mode inversion mostly leaves it alone, and no
+  compose editor has grounds to strip a background nobody's fighting to keep.
+  Navy and gold stay in the design as CONTAINED accent bands — masthead,
+  footer, card top-borders, buttons — never as the page background. Each of
+  those bands carries both a CSS background-color and an HTML bgcolor
+  attribute, since some renderers honor one and drop the other.
+
+  <meta name="color-scheme" content="light"> tells supporting clients this
+  email is light-only — don't try to dark-mode-invert it. Correct because
+  there's no separate dark palette here to invert into.
+
+  For a long-form note to the league: season kickoff, a mid-season check-in,
+  an end-of-season wrap sent as a letter rather than the stats-heavy
+  season-wrap.html. Warmer register than the rest of the kit — see
+  .claude/skills/lawson-league/references/voice.md. This is a letter to real
+  people, not a roast.
+
+  DATA CONTRACT
+    season_line     e.g. "2026 SEASON"
+    greeting        e.g. "League,"
+    thanks_body_html      opening paragraph — thank you for last season
+    lookahead_body_html   second paragraph — excited for what's next
+    topics[]        REPEAT block, the housekeeping list:
+                     { heading, body_html }
+                     e.g. { heading: "Are You In?", body_html: "..." }
+    draft_note_html       short "more info coming" line, optional in spirit
+                           but always rendered — leave it a single plain
+                           sentence if there's nothing to say yet
+    closing_body_html     sign-off paragraph
+    sign_off        e.g. "— Henry, Commissioner"
+    footer_line
+
+  OPTIONAL — survey button (drops out if survey_url is absent)
+    survey_url, survey_cta     e.g. "Take the 2-Minute Survey"
+
+  OPTIONAL — WhatsApp button (drops out if whatsapp_url is absent)
+    whatsapp_url, whatsapp_cta e.g. "Join the WhatsApp Group"
+
+    A WhatsApp invite link is a live join credential, the same as a QR code
+    would be. Never put a real one in data/example-*.json. Real sends use a
+    local-only data file — see local/README.md.
+
+  OPTIONAL — commissioner byline photo (drops out if headshot_image is absent)
+    headshot_image   absolute URL, e.g. a raw.githubusercontent.com path
+                     under assets/commissioner/. Build one from a source
+                     photo with: node scripts/build-headshot.js <in> <out>
+                     — crops to a circle with the brand's gold ring, matching
+                     the monogram badge treatment.
+  ===========================================================================
+-->
+
+<style>
+  @media only screen and (max-width: 620px) {
+    .container { width: 100% !important; }
+    .px { padding-left: 20px !important; padding-right: 20px !important; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background-color:#F4EEE1;" bgcolor="#F4EEE1">
+
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">A note from the Commissioner as we kick off the new season.</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F4EEE1;" bgcolor="#F4EEE1">
+<tr><td align="center" style="padding:24px 12px;">
+
+  <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background-color:#ffffff;" bgcolor="#ffffff">
+
+    <!-- ================= Masthead — navy band, contained ================= -->
+    <tr>
+      <td style="background-color:#10233F;padding:26px 28px;border-bottom:3px solid #C8A04B;" bgcolor="#10233F">
+        <!-- Two columns, not three: at narrow widths a third fixed-width
+             column collides with the eyebrow text and wraps it badly. The
+             season line rides its own short line instead of fighting for a
+             column. -->
+        <!-- Full horizontal lockup (crest + wordmark), not the small circular
+             badge — this already carries "Lawson F&F / Fantasy Football
+             League", so there's no separate wordmark line to duplicate it.
+             width/height attrs are the reliable fallback for clients that
+             ignore the CSS; max-width:100% lets it scale down on mobile. -->
+        <img src="https://raw.githubusercontent.com/hwlaw54/LawsonFantasyBrand/main/assets/logo/png/lockup-primary-1024.png"
+             width="280" height="90" alt="Lawson Family &amp; Friends Fantasy League"
+             style="display:block;max-width:280px;width:100%;height:auto;border:0;">
+        <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:11px;color:#E0BD6D;padding-top:16px;">A Note from the Commissioner</div>
+        <div style="font-family:Oswald,Arial,sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:1px;font-size:11px;color:#b9c0cc;padding-top:4px;">{{SEASON_LINE}}</div>
+      </td>
+    </tr>
+
+    <!-- ================= Letter body — dark text on white ================= -->
+    <tr>
+      <td class="px" style="padding:32px 28px 8px;">
+        <p style="font-family:Barlow,Arial,sans-serif;font-size:16px;line-height:1.65;color:#10233F;margin:0 0 18px;">{{GREETING}}</p>
+        <p style="font-family:Barlow,Arial,sans-serif;font-size:16px;line-height:1.65;color:#2a2f38;margin:0 0 16px;">{{THANKS_BODY_HTML}}</p>
+        <p style="font-family:Barlow,Arial,sans-serif;font-size:16px;line-height:1.65;color:#2a2f38;margin:0;">{{LOOKAHEAD_BODY_HTML}}</p>
+      </td>
+    </tr>
+
+    <!-- ================= Housekeeping ================= -->
+    <tr>
+      <td class="px" style="padding:30px 28px 6px;">
+        <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:12px;color:#a8823a;border-top:1px solid #e6dcc6;padding-top:22px;">Before We Kick Off</div>
+      </td>
+    </tr>
+    <tr>
+      <td class="px" style="padding:12px 28px 0;">
+
+        <!-- REPEAT:topic — light cream card, not navy, so it reads on a
+             white/cream page the same way it would on a dark one. -->
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F4EEE1;border-top:3px solid #C8A04B;margin-bottom:12px;" bgcolor="#F4EEE1">
+        <tr><td style="padding:16px 18px;">
+          <div style="font-family:Cinzel,Georgia,serif;font-weight:700;font-size:16px;color:#10233F;padding-bottom:5px;">{{HEADING}}</div>
+          <div style="font-family:Barlow,Arial,sans-serif;font-size:14px;line-height:1.55;color:#5a5f68;">{{BODY_HTML}}</div>
+        </td></tr>
+        </table>
+        <!-- /REPEAT:topic -->
+
+      </td>
+    </tr>
+
+    <!-- OPTIONAL:survey -->
+    <tr>
+      <td class="px" align="center" style="padding:14px 28px 6px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+        <tr><td style="background-color:#C8A04B;border-radius:4px;" bgcolor="#C8A04B" align="center">
+          <a href="{{SURVEY_URL}}" style="display:inline-block;padding:14px 34px;font-family:Oswald,Arial,sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:14px;color:#10233F;text-decoration:none;">{{SURVEY_CTA}}</a>
+        </td></tr>
+        </table>
+      </td>
+    </tr>
+    <!-- /OPTIONAL:survey -->
+
+    <!-- ================= WhatsApp ================= -->
+    <!-- OPTIONAL:whatsapp -->
+    <tr>
+      <td class="px" style="padding:30px 28px 0;">
+        <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:12px;color:#a8823a;border-top:1px solid #e6dcc6;padding-top:22px;padding-bottom:10px;">New: The League WhatsApp Group</div>
+        <p style="font-family:Barlow,Arial,sans-serif;font-size:15px;line-height:1.6;color:#2a2f38;margin:0 0 18px;">Season chatter, trash talk, and anything league-related now has a home. Tap below to join.</p>
+      </td>
+    </tr>
+    <tr>
+      <td class="px" align="center" style="padding:0 28px 6px;">
+        <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+        <tr><td style="background-color:#C8A04B;border-radius:4px;" bgcolor="#C8A04B" align="center">
+          <a href="{{WHATSAPP_URL}}" style="display:inline-block;padding:14px 34px;font-family:Oswald,Arial,sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;font-size:14px;color:#10233F;text-decoration:none;">{{WHATSAPP_CTA}}</a>
+        </td></tr>
+        </table>
+      </td>
+    </tr>
+    <!-- /OPTIONAL:whatsapp -->
+
+    <!-- ================= Draft note + closing ================= -->
+    <tr>
+      <td class="px" style="padding:30px 28px 6px;">
+        <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:11px;color:#8a8f98;border-top:1px solid #e6dcc6;padding-top:20px;padding-bottom:8px;">Looking Ahead</div>
+        <p style="font-family:Barlow,Arial,sans-serif;font-size:14.5px;line-height:1.6;color:#6b7280;margin:0;">{{DRAFT_NOTE_HTML}}</p>
+      </td>
+    </tr>
+
+    <tr>
+      <td class="px" style="padding:24px 28px 32px;">
+        <p style="font-family:Barlow,Arial,sans-serif;font-size:16px;line-height:1.65;color:#2a2f38;margin:0 0 20px;">{{CLOSING_BODY_HTML}}</p>
+        <!-- OPTIONAL:headshot — a small circular byline photo stacked above
+             the sign-off. Deliberately its own standalone element (not a
+             shared table row with the text) so dropping it can't break
+             surrounding markup; the sign-off line below always renders
+             either way. -->
+        <img src="{{HEADSHOT_IMAGE}}" width="52" height="52" alt="" style="display:block;border-radius:50%;border:0;margin:4px 0 10px;">
+        <!-- /OPTIONAL:headshot -->
+        <p style="font-family:Cinzel,Georgia,serif;font-weight:700;font-size:17px;color:#10233F;margin:0;">{{SIGN_OFF}}</p>
+      </td>
+    </tr>
+
+    <!-- ================= Footer — navy band, contained ================= -->
+    <tr>
+      <td align="center" style="background-color:#10233F;padding:16px 28px;border-top:3px solid #C8A04B;font-family:'Barlow Condensed',Arial,sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#b9c0cc;" bgcolor="#10233F">
+        {{FOOTER_LINE}}
+      </td>
+    </tr>
+
+  </table>
+
+</td></tr>
+</table>
+
+</body>
+</html>
