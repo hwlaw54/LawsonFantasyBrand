@@ -1,0 +1,82 @@
+{
+  "when_line": "Saturday · Aug 29 · 7:00 PM",
+  "format_line": "SNAKE · 15 ROUNDS",
+  "order_note": "Order set by last season",
+  "round_label": "Round 1 · reverse standings order",
+  "house_rules": "Snake reverses each round. 90 seconds on the clock or the system auto-drafts you a punter. Turf Titans pick first — rank has its privileges.",
+  "footer_line": "Lawson Family & Friends Fantasy League · Sixth Annual Draft",
+  "picks": [
+    {
+      "n": "01",
+      "team": "Turf Titans",
+      "meta": "On the clock · 90s",
+      "_class": "is-first"
+    },
+    {
+      "n": "02",
+      "team": "The Fumble Fam",
+      "meta": "Pick 2",
+      "_class": ""
+    },
+    {
+      "n": "03",
+      "team": "End Zone Enforcers",
+      "meta": "Pick 3",
+      "_class": ""
+    },
+    {
+      "n": "04",
+      "team": "Gridiron Grinches",
+      "meta": "Pick 4",
+      "_class": ""
+    },
+    {
+      "n": "05",
+      "team": "Pigskin Prophets",
+      "meta": "Pick 5",
+      "_class": ""
+    },
+    {
+      "n": "06",
+      "team": "Cleat Chasers",
+      "meta": "Pick 6",
+      "_class": ""
+    },
+    {
+      "n": "07",
+      "team": "Fourth & Goalies",
+      "meta": "Pick 7",
+      "_class": ""
+    },
+    {
+      "n": "08",
+      "team": "Purple Reign",
+      "meta": "Pick 8",
+      "_class": ""
+    },
+    {
+      "n": "09",
+      "team": "The Wolfpack",
+      "meta": "Pick 9",
+      "_class": ""
+    },
+    {
+      "n": "10",
+      "team": "Hail Mary Honchos",
+      "meta": "Pick 10",
+      "_class": ""
+    },
+    {
+      "n": "11",
+      "team": "Blitz Brigade",
+      "meta": "Pick 11",
+      "_class": ""
+    },
+    {
+      "n": "12",
+      "team": "Sofa Kings",
+      "meta": "Pick 12",
+      "_class": ""
+    }
+  ]
+}

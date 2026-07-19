@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Chat Cards — Lawson League</title>
+
+<!--
+  ===========================================================================
+  TEMPLATE · CHAT CARDS  (800 × 800 — phone-first image cards)
+  ===========================================================================
+  For iMessage / GroupMe / WhatsApp, where the league actually talks.
+
+  DESIGN CONSTRAINTS — these drive every decision below:
+    · A chat image is first seen as a ~250px-wide thumbnail. The single most
+      important element must be legible AT THAT SIZE. That means one big
+      number or one short line, never a paragraph.
+    · Chat apps letterbox tall images. Square (1:1) survives every client.
+    · No thin hairlines and no type under 20px at the 800px artboard size —
+      both vanish under thumbnail downscaling and JPEG recompression.
+    · The crest must be present but small. It is a signature, not the subject.
+
+  FIVE VARIANTS — export whichever you need, delete the rest:
+    1. result   — a matchup result
+    2. high     — weekly high score
+    3. alert    — injury / roster news
+    4. trade    — trade alert
+    5. quote    — smack-talk quote card
+
+  Each is a .card800 block. The export script screenshots them individually
+  by id, so keep the ids intact.
+  ===========================================================================
+-->
+
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: #05090f;
+    font-family: var(--font-body);
+    display: flex; flex-wrap: wrap; gap: 24px;
+    padding: 24px;
+  }
+
+  .card800 {
+    width: 800px; height: 800px;
+    position: relative;
+    overflow: hidden;
+    background: var(--gradient-navy);
+    display: flex; flex-direction: column;
+    padding: 56px 60px;
+    color: var(--text-body);
+  }
+  .card800::before {
+    content: ""; position: absolute; inset: 0;
+    background: var(--gradient-field); opacity: .28;
+  }
+  .card800 > * { position: relative; }
+
+  /* Gold rule across the top — the brand's fastest tell at thumbnail size. */
+  .card800::after {
+    content: ""; position: absolute; top: 0; left: 0; right: 0;
+    height: 10px; background: var(--gradient-gold);
+  }
+
+  .cardhead {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: auto;
+  }
+  .cardhead img { width: 72px; height: 72px; display: block; }
+  .kicker {
+    font-family: var(--font-condensed);
+    font-weight: 700; text-transform: uppercase;
+    letter-spacing: .2em; font-size: 22px;
+    color: var(--gold-500);
+  }
+  .weekstamp {
+    font-family: var(--font-numeral);
+    font-weight: 600; font-size: 22px;
+    color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: .1em;
+  }
+
+  .cardfoot {
+    margin-top: auto;
+    font-family: var(--font-condensed);
+    text-transform: uppercase; letter-spacing: .22em;
+    font-size: 20px; color: var(--text-muted);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  /* ---- 1. Matchup result ---- */
+  .vs-grid { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 18px; }
+  .vs-team { text-align: center; }
+  .vs-name {
+    font-family: var(--font-display); font-weight: 600;
+    text-transform: uppercase; font-size: 34px; line-height: 1.05;
+    color: var(--cream-100);
+  }
+  .vs-team.lost .vs-name, .vs-team.lost .vs-score { color: var(--text-muted); }
+  .vs-score {
+    font-family: var(--font-numeral); font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    font-size: 96px; line-height: 1; color: var(--gold-500);
+    margin-top: 10px;
+  }
+  .vs-mid {
+    font-family: var(--font-crest); font-weight: 900;
+    font-size: 30px; color: var(--gold-600);
+  }
+  .verdict {
+    margin-top: 40px; text-align: center;
+    font-family: var(--font-body); font-size: 28px; line-height: 1.35;
+    color: var(--cream-200);
+  }
+
+  /* ---- 2. High score ---- */
+  .huge {
+    font-family: var(--font-numeral); font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    font-size: 240px; line-height: .85;
+    color: var(--gold-500);
+    text-align: center;
+    text-shadow: 0 20px 40px rgba(0,0,0,.5);
+  }
+  .huge-sub {
+    text-align: center;
+    font-family: var(--font-display); font-weight: 600;
+    text-transform: uppercase; letter-spacing: .04em;
+    font-size: 44px; color: var(--cream-100); margin-top: 18px;
+  }
+
+  /* ---- 3. Alert ---- */
+  .alert-band {
+    background: var(--red-500); color: #fff;
+    font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .24em;
+    font-size: 24px; padding: 12px 26px;
+    display: inline-block; align-self: flex-start;
+  }
+  .alert-head {
+    font-family: var(--font-display); font-weight: 600;
+    text-transform: uppercase; font-size: 62px; line-height: 1.02;
+    color: var(--cream-100); margin: 30px 0 22px;
+  }
+  .alert-body { font-size: 28px; line-height: 1.45; color: var(--text-body); }
+
+  /* ---- 4. Trade ---- */
+  .trade-side { display: flex; flex-direction: column; gap: 10px; }
+  .trade-team {
+    font-family: var(--font-display); font-weight: 600;
+    text-transform: uppercase; font-size: 30px; color: var(--gold-400);
+  }
+  .trade-asset {
+    font-family: var(--font-body); font-size: 27px; color: var(--cream-100); line-height: 1.3;
+  }
+  .trade-arrow {
+    font-size: 52px; color: var(--gold-500); text-align: center;
+    font-family: var(--font-crest);
+  }
+
+  /* ---- 5. Quote ---- */
+  .quote-mark {
+    font-family: var(--font-crest); font-weight: 900;
+    font-size: 150px; line-height: .6; color: var(--gold-600);
+    opacity: .55;
+  }
+  .quote-text {
+    font-family: var(--font-body); font-size: 46px; line-height: 1.28;
+    color: var(--cream-100); margin: 10px 0 28px;
+  }
+  .quote-attr {
+    font-family: var(--font-condensed); text-transform: uppercase;
+    letter-spacing: .18em; font-size: 24px; color: var(--gold-500);
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= 1. MATCHUP RESULT ================= -->
+<div class="card800" id="card-result">
+  <div class="cardhead">
+    <span class="kicker">Final</span>
+    <img src="../assets/logo/crest-full.svg" alt="">
+  </div>
+
+  <div class="vs-grid">
+    <div class="vs-team">
+      <div class="vs-name">{{WINNER}}</div>
+      <div class="vs-score">{{WINNER_SCORE}}</div>
+    </div>
+    <div class="vs-mid">VS</div>
+    <div class="vs-team lost">
+      <div class="vs-name">{{LOSER}}</div>
+      <div class="vs-score">{{LOSER_SCORE}}</div>
+    </div>
+  </div>
+
+  <div class="verdict">{{VERDICT}}</div>
+
+  <div class="cardfoot">
+    <span>{{WEEK}}</span>
+    <span>Lawson F&amp;F</span>
+  </div>
+</div>
+
+<!-- ================= 2. HIGH SCORE ================= -->
+<div class="card800" id="card-high">
+  <div class="cardhead">
+    <span class="kicker">High Score</span>
+    <img src="../assets/logo/crest-full.svg" alt="">
+  </div>
+
+  <div>
+    <div class="huge">{{SCORE}}</div>
+    <div class="huge-sub">{{TEAM}}</div>
+    <div class="verdict" style="margin-top:26px">{{NOTE}}</div>
+  </div>
+
+  <div class="cardfoot">
+    <span>{{WEEK}}</span>
+    <span>Lawson F&amp;F</span>
+  </div>
+</div>
+
+<!-- ================= 3. ALERT ================= -->
+<div class="card800" id="card-alert">
+  <div class="cardhead">
+    <span class="kicker">League Alert</span>
+    <img src="../assets/logo/crest-full.svg" alt="">
+  </div>
+
+  <div>
+    <span class="alert-band">{{ALERT_TAG}}</span>
+    <div class="alert-head">{{ALERT_HEAD}}</div>
+    <div class="alert-body">{{ALERT_BODY}}</div>
+  </div>
+
+  <div class="cardfoot">
+    <span>{{WEEK}}</span>
+    <span>Lawson F&amp;F</span>
+  </div>
+</div>
+
+<!-- ================= 4. TRADE ================= -->
+<div class="card800" id="card-trade">
+  <div class="cardhead">
+    <span class="kicker">Trade Alert</span>
+    <img src="../assets/logo/crest-full.svg" alt="">
+  </div>
+
+  <div>
+    <div class="trade-side">
+      <div class="trade-team">{{TEAM_A}} gets</div>
+      <div class="trade-asset">{{TEAM_A_GETS}}</div>
+    </div>
+    <div class="trade-arrow">⇅</div>
+    <div class="trade-side">
+      <div class="trade-team">{{TEAM_B}} gets</div>
+      <div class="trade-asset">{{TEAM_B_GETS}}</div>
+    </div>
+    <div class="verdict" style="margin-top:36px;text-align:left">{{TRADE_VERDICT}}</div>
+  </div>
+
+  <div class="cardfoot">
+    <span>{{WEEK}}</span>
+    <span>Lawson F&amp;F</span>
+  </div>
+</div>
+
+<!-- ================= 5. SMACK TALK ================= -->
+<div class="card800" id="card-quote">
+  <div class="cardhead">
+    <span class="kicker">On the Record</span>
+    <img src="../assets/logo/crest-full.svg" alt="">
+  </div>
+
+  <div>
+    <div class="quote-mark">&ldquo;</div>
+    <div class="quote-text">{{QUOTE}}</div>
+    <div class="quote-attr">— {{ATTRIBUTION}}</div>
+  </div>
+
+  <div class="cardfoot">
+    <span>{{WEEK}}</span>
+    <span>Lawson F&amp;F</span>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Season Awards — Lawson League</title>
+
+<!--
+  ===========================================================================
+  TEMPLATE · SEASON AWARDS
+  ===========================================================================
+  End-of-season hardware, real and otherwise. Built for 6–10 awards.
+
+  DATA CONTRACT
+    season         e.g. "SEASON VI"
+    season_line    e.g. "2025 · The Envelope, Please"
+    champion       the title winner
+    champion_line  one line on how they did it
+    runner_up
+    last_place     + last_place_line   (the punishment)
+    awards[]       { name, winner, citation, _class }
+                   _class: "is-honor" for the good ones (gold),
+                           "is-shame" for the bad ones (red).
+    footer_line
+  ===========================================================================
+-->
+
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  .champ {
+    background: var(--gradient-navy);
+    border-bottom: 1px solid var(--border-hairline);
+    padding: 44px 34px 40px;
+    text-align: center;
+    position: relative; overflow: hidden;
+  }
+  .champ::before {
+    content: ""; position: absolute; inset: 0;
+    background: var(--gradient-field); opacity: .3;
+  }
+  .champ > * { position: relative; }
+  .champ img { width: 118px; display: block; margin: 0 auto 18px; }
+  .champ-name {
+    font-family: var(--font-crest); font-weight: 900;
+    font-size: 52px; line-height: 1.05;
+    color: var(--cream-100); margin: 6px 0 8px;
+  }
+  .champ-line { font-size: 16px; color: var(--cream-200); max-width: 560px; margin: 0 auto; line-height: 1.5; }
+  .champ-rule { width: 110px; height: 3px; background: var(--gradient-gold); margin: 20px auto 0; }
+
+  .book-ends { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 24px 30px 8px; }
+
+  .award {
+    display: grid; grid-template-columns: 1fr;
+    border: 1px solid var(--border-hairline);
+    border-top: 3px solid var(--gold-500);
+    border-radius: 8px;
+    background: var(--gradient-navy-flat);
+    padding: 16px 18px;
+  }
+  .award.is-shame { border-top-color: var(--red-500); border-color: rgba(176,48,60,.35); }
+  .award-name {
+    font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .16em;
+    font-size: 11.5px; color: var(--gold-500);
+  }
+  .award.is-shame .award-name { color: var(--red-500); }
+  .award-winner {
+    font-family: var(--font-crest); font-weight: 900;
+    font-size: 20px; color: var(--cream-100); margin: 7px 0 4px; line-height: 1.15;
+  }
+  .award-cite { font-size: 13.5px; color: var(--text-muted); line-height: 1.45; }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="masthead" style="padding:20px 34px">
+    <div class="masthead-id">
+      <img src="../assets/logo/monogram-badge.svg" alt="Lawson League" style="width:50px;height:50px">
+      <div>
+        <div class="ey" style="font-size:11px;color:var(--gold-400)">{{SEASON_LINE}}</div>
+        <div class="hl" style="font-size:28px;margin-top:2px">Season Awards</div>
+      </div>
+    </div>
+    <div class="masthead-meta">
+      <div class="big">{{SEASON}}</div>
+      <div>The books are closed</div>
+    </div>
+  </div>
+
+  <!-- ---- Champion ---- -->
+  <div class="champ">
+    <img src="../assets/logo/crest-full.svg" alt="">
+    <div class="ey" style="letter-spacing:.3em;font-size:13px">League Champion</div>
+    <div class="champ-name">{{CHAMPION}}</div>
+    <div class="champ-line">{{CHAMPION_LINE}}</div>
+    <div class="champ-rule"></div>
+  </div>
+
+  <!-- ---- Runner-up and the basement ---- -->
+  <div class="book-ends">
+    <div class="card card-accent-cream">
+      <div class="ey" style="color:var(--cream-200)">Runner-Up</div>
+      <div class="serif" style="font-size:20px;margin:6px 0 2px">{{RUNNER_UP}}</div>
+      <div class="muted" style="font-size:13px;line-height:1.4">So close. Forever second.</div>
+    </div>
+    <div class="card card-accent-red">
+      <div class="ey red">Last Place · Pays the Price</div>
+      <div class="serif" style="font-size:20px;margin:6px 0 2px">{{LAST_PLACE}}</div>
+      <div class="muted" style="font-size:13px;line-height:1.4">{{LAST_PLACE_LINE}}</div>
+    </div>
+  </div>
+
+  <!-- ---- The hardware ---- -->
+  <div style="padding:18px 30px 30px">
+    <div class="ey" style="margin-bottom:12px">The Hardware</div>
+    <div class="grid-2" style="gap:14px">
+      <!-- REPEAT:award -->
+      <div class="award is-honor">
+        <div class="award-name">{{NAME}}</div>
+        <div class="award-winner">{{WINNER}}</div>
+        <div class="award-cite">{{CITATION}}</div>
+      </div>
+      <!-- /REPEAT:award -->
+    </div>
+  </div>
+
+  <div class="footer">{{FOOTER_LINE}}</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+{
+  "name": "lawson-league-brand",
+  "version": "1.0.0",
+  "description": "Brand kit for the Lawson Family & Friends Fantasy Football League — logos, fonts, tokens, and content templates.",
+  "author": "Henry Lawson",
+  "license": "MIT",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "render": "node scripts/render.js",
+    "build:logos": "node scripts/build-logos.js",
+    "build:pngs": "node scripts/build-pngs.js",
+    "build:fonts": "node scripts/fetch-fonts.js",
+    "build": "npm run build:logos && npm run build:pngs",
+    "examples": "node scripts/render-examples.js"
+  },
+  "dependencies": {
+    "opentype.js": "^2.0.0",
+    "puppeteer-core": "^25.3.0",
+    "sharp": "^0.35.3"
+  }
+}

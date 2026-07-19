@@ -1,0 +1,4 @@
+/* Fallback: pull the same four families from Google's CDN.
+ * Use only where the self-hosted files in fonts.css can't be reached.
+ */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Oswald:wght@300;400;500;600;700&family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap');

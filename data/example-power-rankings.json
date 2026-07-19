@@ -1,0 +1,23 @@
+{
+  "_comment": "Example data for templates/power-rankings.html. Copy this, change the values, run: node scripts/render.js power-rankings data/your-file.json --png",
+
+  "week_line": "Week 4 · The Committee has spoken",
+  "season": "SEASON VI",
+  "season_sub": "12 Teams · 1 Trophy",
+  "footer_line": "Rankings are subjective, final, and designed to make you mad · LFF Est. 2020",
+
+  "teams": [
+    { "_class": "is-first", "rank": "1",  "team": "Sofa Kings",         "note": "Undefeated and unbearable. The team to beat, sadly.",        "record": "4-0", "move": "⬆ 2" },
+    { "rank": "2",  "team": "Blitz Brigade",      "note": "Dropped 141 and still found something to complain about.",  "record": "3-1", "move": "⬆ 1" },
+    { "rank": "3",  "team": "Hail Mary Honchos",  "note": "Quietly good. Loudly annoying. A dangerous combo.",         "record": "3-1", "move": "⬆ 4" },
+    { "rank": "4",  "team": "The Wolfpack",       "note": "Boring, efficient, winning. The Toyota Camry of the league.", "record": "3-1", "move": "— 0" },
+    { "rank": "5",  "team": "Purple Reign",       "note": "Beat the Prophets and immediately told everyone about it.",  "record": "2-2", "move": "⬆ 3" },
+    { "rank": "6",  "team": "Fourth & Goalies",   "note": "A tie. In fantasy football. Take a bow, genius.",            "record": "2-2", "move": "⬇ 1" },
+    { "rank": "7",  "team": "Cleat Chasers",      "note": "Lost by 0.2. Somewhere, a kicker is to blame.",              "record": "2-2", "move": "⬇ 4" },
+    { "rank": "8",  "team": "Pigskin Prophets",   "note": "Prophesied a title. Currently prophesying the toilet bowl.", "record": "2-2", "move": "⬇ 2" },
+    { "rank": "9",  "team": "Gridiron Grinches",  "note": "Choked away a tie. Framed it as \"a moral win.\"",           "record": "1-3", "move": "⬇ 1" },
+    { "rank": "10", "team": "End Zone Enforcers", "note": "Enforcing nothing. Not even a competent lineup.",            "record": "1-3", "move": "— 0" },
+    { "rank": "11", "team": "The Fumble Fam",     "note": "Living up to the name with alarming consistency.",           "record": "1-3", "move": "⬇ 2" },
+    { "rank": "12", "team": "Turf Titans",        "note": "Projected first. Buying the trophy. See you at the bottom.", "record": "0-4", "move": "⬇ 5" }
+  ]
+}

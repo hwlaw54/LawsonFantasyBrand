@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Draft Night — Lawson League</title>
+
+<!--
+  ===========================================================================
+  TEMPLATE · EVENT FLYER  (680 × 960 — portrait, poster proportions)
+  ===========================================================================
+  Built for Draft Night but works for any league event: playoff kickoff,
+  championship party, punishment day.
+
+  DATA CONTRACT
+    kicker        e.g. "The Sixth Annual · You're Invited"
+    title_1/2     the big Cinzel headline, two stacked lines
+    subtitle      e.g. "12 managers · 1 trophy · zero mercy"
+    details[]     { label, value }  — When / Where / Format / Stakes
+    cta           e.g. "Confirm your seat by Aug 22"
+    footer_line
+  ===========================================================================
+-->
+
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  .sheet {
+    width: 680px;
+    min-height: 960px;
+    background: var(--gradient-navy);
+    position: relative;
+    overflow: hidden;
+    padding: 56px 56px 40px;
+  }
+  /* Faint yard-line texture behind everything. */
+  .field {
+    position: absolute; inset: 0;
+    background: var(--gradient-field);
+    opacity: .3;
+  }
+  .content { position: relative; text-align: center; }
+  .detail-row {
+    display: flex; align-items: baseline; gap: 18px;
+    padding: 13px 4px;
+    border-bottom: 1px solid var(--border-hairline);
+  }
+  .detail-row .ey { width: 78px; flex: none; }
+  .detail-row .val { font-family: var(--font-body); font-size: 17px; color: var(--cream-100); }
+  .cta {
+    margin-top: 48px;
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--gradient-gold);
+    color: var(--navy-700);
+    font-family: var(--font-display);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    font-size: 15px;
+    padding: 14px 30px;
+    border-radius: 4px;
+  }
+  .flyer-foot {
+    position: absolute; bottom: 20px; left: 0; right: 0;
+    text-align: center;
+    font-family: var(--font-condensed);
+    text-transform: uppercase;
+    letter-spacing: .22em;
+    font-size: 11px;
+    color: var(--text-muted);
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+  <div class="field"></div>
+
+  <div class="content">
+    <img src="../assets/logo/crest-full.svg" alt="Lawson League" style="width:190px;display:block;margin:0 auto">
+    <div style="font-family:var(--font-crest);font-weight:700;font-size:13px;letter-spacing:.32em;color:var(--cream-100);margin-top:10px">FANTASY LEAGUE</div>
+
+    <div class="ey" style="margin-top:34px;font-size:14px;letter-spacing:.3em">{{KICKER}}</div>
+    <h1 class="serif" style="font-size:82px;line-height:.9;margin:14px 0 6px;letter-spacing:.02em">{{TITLE_1}}<br>{{TITLE_2}}</h1>
+    <div style="width:120px;height:3px;background:var(--gradient-gold);margin:18px auto 0"></div>
+    <p style="font-family:var(--font-display);font-weight:500;text-transform:uppercase;letter-spacing:.16em;font-size:16px;color:var(--gold-400);margin:26px 0 40px">{{SUBTITLE}}</p>
+
+    <div style="display:flex;flex-direction:column;gap:2px;max-width:420px;margin:0 auto;text-align:left">
+      <!-- REPEAT:detail -->
+      <div class="detail-row">
+        <span class="ey">{{LABEL}}</span>
+        <span class="val">{{VALUE}}</span>
+      </div>
+      <!-- /REPEAT:detail -->
+    </div>
+
+    <div class="cta">{{CTA}}</div>
+  </div>
+
+  <div class="flyer-foot">{{FOOTER_LINE}}</div>
+</div>
+</body>
+</html>

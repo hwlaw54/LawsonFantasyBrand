@@ -1,0 +1,238 @@
+/* ============================================================
+   Shared template chrome.
+   Every template links fonts.css → tokens.css → _shared.css.
+   Anything used by two or more templates belongs here, so a
+   newsletter and a power-rankings sheet can't drift apart.
+   ============================================================ */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--navy-900);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* The page/canvas each template renders onto. Fixed width so PNG export is
+   deterministic — the export script screenshots .sheet, not the viewport. */
+.sheet {
+  width: 860px;
+  margin: 0 auto;
+  background: var(--navy-800);
+  position: relative;
+}
+
+/* ---- Type roles ---------------------------------------------------- */
+
+/* Signature broadcast label. */
+.ey {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  font-size: 12px;
+  color: var(--gold-500);
+}
+
+/* Big uppercase broadcast headline. */
+.hl {
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--cream-100);
+  line-height: 1.02;
+  margin: 0;
+}
+
+/* Cinzel — names, titles, anything that should feel engraved. */
+.serif {
+  font-family: var(--font-crest);
+  font-weight: 900;
+  color: var(--cream-100);
+}
+
+/* Numerals. Tabular so score columns align. */
+.num {
+  font-family: var(--font-numeral);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.muted { color: var(--text-muted); }
+.gold  { color: var(--gold-500); }
+.red   { color: var(--red-500); }
+.pos   { color: var(--positive); }
+
+/* ---- Masthead ------------------------------------------------------ */
+
+.masthead {
+  background: var(--gradient-navy);
+  padding: 22px 34px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--gold-500);
+}
+
+.masthead-id { display: flex; align-items: center; gap: 16px; }
+.masthead-id img { width: 52px; height: 52px; flex: none; display: block; }
+
+.masthead-title {
+  font-family: var(--font-crest);
+  font-weight: 900;
+  color: var(--cream-100);
+  font-size: 30px;
+  letter-spacing: .02em;
+  line-height: 1.1;
+}
+
+.masthead-sub {
+  font-family: var(--font-condensed);
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: 11px;
+  color: var(--gold-400);
+}
+
+.masthead-meta {
+  text-align: right;
+  font-family: var(--font-numeral);
+  color: var(--text-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.masthead-meta .big { color: var(--gold-500); font-weight: 600; }
+
+/* ---- Structure ----------------------------------------------------- */
+
+.pad { padding: 30px 34px; }
+
+.card {
+  background: var(--gradient-navy-flat);
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+.card-accent-gold  { border-top: 3px solid var(--gold-500); }
+.card-accent-red   { border-top: 3px solid var(--red-500); border-color: rgba(176,48,60,.4); }
+.card-accent-cream { border-top: 3px solid var(--cream-200); }
+
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+/* Table-ish list used by the scoreboard, standings, rankings. */
+.rows {
+  background: var(--navy-900);
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+  overflow: hidden;
+}
+.row {
+  display: flex;
+  align-items: center;
+  padding: 9px 14px;
+  border-bottom: 1px solid rgba(200,160,75,.12);
+}
+.row:last-child { border-bottom: 0; }
+
+/* ---- Power rankings ------------------------------------------------ */
+
+.rank-head {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 22px;
+  background: var(--navy-900);
+  border-bottom: 1px solid var(--border-hairline);
+}
+.rank-row {
+  display: flex; align-items: center; gap: 18px;
+  padding: 14px 20px;
+  border-bottom: 1px solid rgba(200,160,75,.12);
+}
+/* Number one gets a gold wash to earn the spot. */
+.rank-row.is-first { background: linear-gradient(90deg, rgba(200,160,75,.12), transparent); }
+.rank-row .rank-n  { font-family: var(--font-numeral); font-weight: 600; font-variant-numeric: tabular-nums;
+                     font-size: 30px; color: var(--cream-100); width: 40px; text-align: center; }
+.rank-row.is-first .rank-n { color: var(--gold-500); }
+.rank-row .rank-team { font-family: var(--font-display); font-weight: 600; text-transform: uppercase;
+                       color: var(--cream-100); line-height: 1; font-size: 19px; }
+.rank-row .rank-note { font-size: 13.5px; color: var(--text-muted); line-height: 1.35; margin-top: 2px; }
+.rank-row .rank-rec  { font-family: var(--font-numeral); font-weight: 600; font-variant-numeric: tabular-nums;
+                       font-size: 16px; color: var(--cream-100); width: 52px; text-align: center; }
+.rank-row .rank-move { font-family: var(--font-condensed); font-weight: 600; font-size: 13px;
+                       width: 44px; text-align: right; }
+
+/* ---- Standings ----------------------------------------------------- */
+
+.stand-grid {
+  display: grid;
+  grid-template-columns: 34px 1fr 44px 66px 66px 44px;
+  align-items: center;
+  gap: 8px;
+  padding: 11px 20px;
+}
+.stand-head { background: var(--navy-900); border-bottom: 1px solid var(--border-hairline); }
+.stand-row  { border-bottom: 1px solid rgba(200,160,75,.1); }
+.stand-row.is-first { background: linear-gradient(90deg, rgba(200,160,75,.1), transparent); }
+/* The playoff cut line. Sits under the last team that makes it. */
+.stand-row.is-cut { border-bottom: 2px solid var(--red-500); }
+.stand-row .team { font-family: var(--font-condensed); font-weight: 600; font-size: 16px; color: var(--cream-100); }
+.stand-row.is-out .team,
+.stand-row.is-out .pos-n { color: var(--text-muted); }
+
+/* ---- Draft board --------------------------------------------------- */
+
+.pick {
+  background: var(--gradient-navy-flat);
+  border: 1px solid var(--border-hairline);
+  border-radius: 8px;
+  padding: 14px 16px;
+  display: flex; align-items: center; gap: 14px;
+}
+.pick.is-first { border-color: var(--gold-500); }
+.pick .pick-n { font-family: var(--font-numeral); font-weight: 600; font-variant-numeric: tabular-nums;
+                font-size: 26px; color: var(--cream-100); width: 30px; }
+.pick.is-first .pick-n { color: var(--gold-500); }
+.pick .pick-team { font-family: var(--font-condensed); font-weight: 600; font-size: 15px; color: var(--cream-100); }
+.pick .pick-meta { font-family: var(--font-condensed); text-transform: uppercase; letter-spacing: .1em;
+                   font-size: 10px; color: var(--text-muted); }
+
+.note-box {
+  padding: 14px 18px;
+  background: var(--navy-900);
+  border: 1px dashed var(--border-hairline);
+  border-radius: 8px;
+  font-size: 13.5px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.note-box .note-label {
+  color: var(--gold-500);
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: 12px;
+}
+
+/* ---- Footer -------------------------------------------------------- */
+
+.footer {
+  background: var(--gradient-navy);
+  padding: 16px 34px;
+  text-align: center;
+  border-top: 1px solid var(--border-hairline);
+  font-family: var(--font-condensed);
+  text-transform: uppercase;
+  letter-spacing: .2em;
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+/* ---- Export -------------------------------------------------------- */
+
+@media print {
+  @page { margin: 0; }
+  body { background: var(--navy-800); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

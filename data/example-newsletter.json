@@ -1,0 +1,55 @@
+{
+  "week": "WEEK 4",
+  "issue_line": "Oct 2025 · Issue 04",
+  "lede_eyebrow": "Game of the Week",
+  "lede_headline_HTML": "Grinches Choke Away 118–118 Tie<br>on a Missed Extra Point",
+  "lede_byline": "Filed by the Commissioner · reads: brutal",
+  "lede_body_1": "In a league where mercy is a foreign concept, Dave managed to snatch mediocrity from the jaws of victory — a tie, decided by a kicker he benched Tuesday and re-added in a panic Sunday morning. Poetry.",
+  "lede_body_2": "Elsewhere, the Sofa Kings continue their reign of terror, and somebody named their team “Cleat Chasers” and then lost by 0.2. We don’t make the rules; we just enjoy them.",
+  "top_team": "Sofa Kings",
+  "top_note": "128.4 pts · 4–0. Undefeated and unbearable about it.",
+  "fraud_team": "Turf Titans",
+  "fraud_note": "96.2 pts. Projected first. Finished like a folding chair.",
+  "stat_value": "141.0",
+  "stat_note": "High score of Week 4 — Blitz Brigade, by a nose.",
+  "footer_line": "Lawson Family & Friends Fantasy League · Sixth Annual · Trophy or bust",
+  "matchups": [
+    {
+      "winner": "Sofa Kings",
+      "winner_score": "128.4",
+      "loser": "Turf Titans",
+      "loser_score": "96.2"
+    },
+    {
+      "winner": "Blitz Brigade",
+      "winner_score": "141.0",
+      "loser": "Cleat Chasers",
+      "loser_score": "139.8"
+    },
+    {
+      "winner": "The Wolfpack",
+      "winner_score": "112.6",
+      "loser": "The Fumble Fam",
+      "loser_score": "101.3"
+    },
+    {
+      "winner": "Purple Reign",
+      "winner_score": "120.5",
+      "loser": "Pigskin Prophets",
+      "loser_score": "108.9"
+    },
+    {
+      "winner": "Hail Mary Honchos",
+      "winner_score": "133.7",
+      "loser": "End Zone Enforcers",
+      "loser_score": "99.1"
+    },
+    {
+      "winner": "Fourth & Goalies",
+      "winner_score": "118.2",
+      "loser": "Gridiron Grinches",
+      "loser_score": "118.0"
+    }
+  ],
+  "lede_headline": "Grinches Choke Away 118–118 Tie on a Missed Extra Point"
+}

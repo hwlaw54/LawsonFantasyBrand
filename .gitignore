@@ -1,0 +1,22 @@
+node_modules/
+
+# Generated assets. Rendered on demand from templates/ + data/, so there is no
+# reason to version them. Committed preview copies live in docs/previews/.
+output/
+
+# TTF originals, only needed by build-logos.js to outline the crest lettering.
+# Re-fetch with: node scripts/fetch-fonts.js
+scripts/.ttf-cache/
+
+# Personal files that must never reach a public repo. A stray WhatsApp QR
+# screenshot (which encodes a phone number and acts as a contact credential)
+# was sitting in this folder during setup — keep that class of file out.
+*WhatsApp*
+*QR code*
+/*.png
+
+# Scratch
+assets/logo/_contact-sheet.html
+.DS_Store
+Thumbs.db
+*.log

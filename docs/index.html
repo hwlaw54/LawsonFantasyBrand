@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lawson League — Brand Board</title>
+<link rel="icon" href="../assets/logo/favicon.svg">
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg-deep);
+    color: var(--text-body);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--container-wide); margin: 0 auto; padding: 0 32px; }
+
+  .topbar {
+    display: flex; align-items: center; gap: 14px;
+    padding: 18px 32px;
+    border-bottom: 1px solid rgba(200,160,75,.14);
+    position: sticky; top: 0; z-index: 5;
+    background: rgba(8,17,33,.86);
+    backdrop-filter: blur(10px);
+  }
+  .topbar img { width: 36px; height: 36px; display: block; }
+  .topbar .name { font-family: var(--font-crest); font-weight: 800; letter-spacing: .04em; color: var(--cream-100); font-size: 16px; }
+  .topbar .sub { font-family: var(--font-condensed); text-transform: uppercase; letter-spacing: .16em; font-size: 11px; color: var(--text-muted); }
+
+  .hero {
+    background: var(--gradient-navy);
+    text-align: center;
+    padding: 76px 0 88px;
+    position: relative; overflow: hidden;
+  }
+  .hero::before { content:""; position:absolute; inset:0; background: var(--gradient-field); opacity:.35; }
+  .hero > * { position: relative; }
+  .hero img { width: 260px; margin: 0 auto; display: block; filter: drop-shadow(0 20px 30px rgba(0,0,0,.55)); }
+  .hero h1 { font-family: var(--font-crest); font-weight: 900; color: var(--cream-100); font-size: 44px; line-height: 1.05; margin: 30px 0 10px; letter-spacing: .02em; }
+  .hero p { font-family: var(--font-display); font-weight: 400; text-transform: uppercase; letter-spacing: .34em; font-size: 14px; color: var(--gold-400); margin: 0; }
+
+  section { padding: 64px 0; border-top: 1px solid rgba(200,160,75,.14); }
+  .sechead { display: flex; align-items: center; gap: 18px; margin-bottom: 30px; }
+  .sechead .eyebrow {
+    font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase;
+    letter-spacing: var(--tracking-label); font-size: 13px; color: var(--gold-500);
+    white-space: nowrap;
+  }
+  .sechead .rule { height: 1px; background: linear-gradient(90deg, var(--border-hairline), transparent); flex: 1; }
+
+  .grid { display: grid; gap: 20px; }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
+  .g6 { grid-template-columns: repeat(6, 1fr); }
+
+  .panel {
+    background: var(--gradient-navy-flat);
+    border: 1px solid var(--border-hairline);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: 34px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 18px; min-height: 250px; position: relative;
+  }
+  .panel.light { background: var(--cream-100); }
+  .panel .tag {
+    position: absolute; top: 13px; left: 15px;
+    font-family: var(--font-condensed); text-transform: uppercase;
+    letter-spacing: .14em; font-size: 11px; color: var(--text-muted);
+  }
+  .panel.light .tag { color: var(--slate-500); }
+  .panel img { max-width: 100%; max-height: 170px; }
+
+  /* Colour */
+  .sw { border-radius: var(--radius-md); overflow: hidden; border: 1px solid rgba(255,255,255,.06); }
+  .sw .chip { height: 88px; }
+  .sw .meta { padding: 10px 12px; background: var(--navy-800); }
+  .sw .nm { font-family: var(--font-condensed); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; font-size: 12px; color: var(--cream-100); }
+  .sw .hex { font-family: var(--font-numeral); font-size: 12px; color: var(--text-muted); }
+
+  /* Type */
+  .trow { display: grid; grid-template-columns: 170px 1fr; gap: 24px; align-items: baseline; padding-bottom: 22px; margin-bottom: 22px; border-bottom: 1px solid rgba(200,160,75,.12); }
+  .trow .k { font-family: var(--font-condensed); text-transform: uppercase; letter-spacing: .12em; font-size: 12px; color: var(--gold-500); }
+  .trow .k small { display: block; color: var(--text-muted); letter-spacing: .04em; margin-top: 4px; font-size: 11px; text-transform: none; }
+  .sp-crest   { font-family: var(--font-crest); font-weight: 900; font-size: 40px; color: var(--cream-100); }
+  .sp-display { font-family: var(--font-display); font-weight: 600; font-size: 34px; text-transform: uppercase; color: var(--cream-100); }
+  .sp-label   { font-family: var(--font-condensed); font-weight: 700; text-transform: uppercase; letter-spacing: .2em; font-size: 16px; color: var(--gold-500); }
+  .sp-body    { font-family: var(--font-body); font-size: 17px; line-height: 1.6; color: var(--text-body); }
+  .sp-num     { font-family: var(--font-numeral); font-weight: 600; font-size: 40px; color: var(--gold-500); font-variant-numeric: tabular-nums; }
+
+  /* Voice */
+  .voice { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .quote { padding: 28px 30px; background: var(--gradient-navy-flat); border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); }
+  .quote .lab { font-family: var(--font-condensed); text-transform: uppercase; letter-spacing: .14em; font-size: 12px; margin-bottom: 10px; }
+  .quote.do .lab { color: var(--positive); }
+  .quote.dont .lab { color: var(--red-500); }
+  .quote p { margin: 0; font-size: 18px; line-height: 1.5; color: var(--cream-100); }
+  .quote .why { margin-top: 12px; font-size: 13px; color: var(--text-muted); }
+
+  /* Templates */
+  .tpl { background: var(--navy-800); border: 1px solid var(--border-hairline); border-radius: var(--radius-lg); overflow: hidden; }
+  .tpl img { width: 100%; display: block; border-bottom: 1px solid var(--border-hairline); }
+  .tpl .cap { padding: 12px 14px; }
+  .tpl .cap b { font-family: var(--font-condensed); text-transform: uppercase; letter-spacing: .12em; font-size: 12px; color: var(--cream-100); display: block; }
+  .tpl .cap span { font-size: 12px; color: var(--text-muted); }
+
+  footer { padding: 40px 0 60px; text-align: center; color: var(--text-muted); font-size: 13px; border-top: 1px solid rgba(200,160,75,.14); font-family: var(--font-condensed); text-transform: uppercase; letter-spacing: .2em; }
+
+  @media (max-width: 900px) {
+    .g3, .g4 { grid-template-columns: 1fr 1fr; }
+    .g6 { grid-template-columns: repeat(3, 1fr); }
+    .voice, .trow { grid-template-columns: 1fr; }
+    .hero h1 { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <img src="../assets/logo/monogram-badge.svg" alt="">
+  <div>
+    <div class="name">Lawson Family &amp; Friends Fantasy League</div>
+    <div class="sub">Brand System · v1</div>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <img src="../assets/logo/crest-full.svg" alt="Lawson Family &amp; Friends Fantasy League crest">
+    <h1>Lawson Family &amp; Friends<br>Fantasy League</h1>
+    <p>Sixth Annual · 12 Teams · One Trophy</p>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- ---- Logos ---- -->
+  <section>
+    <div class="sechead"><span class="eyebrow">01 — Logo Lockups</span><span class="rule"></span></div>
+
+    <div class="panel" style="margin-bottom:20px;min-height:0">
+      <span class="tag">Primary lockup · horizontal</span>
+      <img src="../assets/logo/lockup-primary.svg" alt="" style="max-height:170px;margin-top:14px">
+    </div>
+
+    <div class="grid g3">
+      <div class="panel"><span class="tag">Crest · on navy</span><img src="../assets/logo/crest-full.svg" alt=""></div>
+      <div class="panel light"><span class="tag">Crest · on cream</span><img src="../assets/logo/crest-full.svg" alt=""></div>
+      <div class="panel"><span class="tag">Monogram badge</span><img src="../assets/logo/monogram-badge.svg" alt=""></div>
+      <div class="panel"><span class="tag">Stacked lockup</span><img src="../assets/logo/lockup-stacked.svg" alt=""></div>
+      <div class="panel"><span class="tag">One colour · gold</span><img src="../assets/logo/crest-mono-gold.svg" alt=""></div>
+      <div class="panel light"><span class="tag">One colour · navy</span><img src="../assets/logo/crest-mono-navy.svg" alt=""></div>
+    </div>
+  </section>
+
+  <!-- ---- Colour ---- -->
+  <section>
+    <div class="sechead"><span class="eyebrow">02 — Colour</span><span class="rule"></span></div>
+    <div class="grid g6">
+      <div class="sw"><div class="chip" style="background:var(--navy-700)"></div><div class="meta"><div class="nm">Navy</div><div class="hex">#10233F</div></div></div>
+      <div class="sw"><div class="chip" style="background:var(--navy-900)"></div><div class="meta"><div class="nm">Navy Deep</div><div class="hex">#081121</div></div></div>
+      <div class="sw"><div class="chip" style="background:var(--gold-500)"></div><div class="meta"><div class="nm">Gold</div><div class="hex">#C8A04B</div></div></div>
+      <div class="sw"><div class="chip" style="background:var(--cream-100)"></div><div class="meta"><div class="nm">Cream</div><div class="hex">#F4EEE1</div></div></div>
+      <div class="sw"><div class="chip" style="background:var(--red-500)"></div><div class="meta"><div class="nm">Blood Red</div><div class="hex">#B0303C</div></div></div>
+      <div class="sw"><div class="chip" style="background:var(--positive)"></div><div class="meta"><div class="nm">Positive</div><div class="hex">#4a9d6a</div></div></div>
+    </div>
+  </section>
+
+  <!-- ---- Type ---- -->
+  <section>
+    <div class="sechead"><span class="eyebrow">03 — Typography</span><span class="rule"></span></div>
+
+    <div class="trow"><div class="k">Crest<small>Cinzel 900</small></div><div class="sp-crest">Sofa Kings</div></div>
+    <div class="trow"><div class="k">Display<small>Oswald 600</small></div><div class="sp-display">Power Rankings</div></div>
+    <div class="trow"><div class="k">Label<small>Barlow Condensed 700 · .18em</small></div><div class="sp-label">The Committee Has Spoken</div></div>
+    <div class="trow"><div class="k">Body<small>Barlow 400</small></div><div class="sp-body">In a league where mercy is a foreign concept, Dave managed to snatch mediocrity from the jaws of victory — a tie, decided by a kicker he benched Tuesday.</div></div>
+    <div class="trow" style="border-bottom:0"><div class="k">Numerals<small>Oswald 600 · tabular</small></div><div class="sp-num">141.0 · 128.4 · 4–0</div></div>
+  </section>
+
+  <!-- ---- Voice ---- -->
+  <section>
+    <div class="sechead"><span class="eyebrow">04 — Voice</span><span class="rule"></span></div>
+    <div class="voice">
+      <div class="quote do">
+        <div class="lab">✓ On brand</div>
+        <p>“Reigning champ opens with a 38-point beatdown. Everyone else is playing for second.”</p>
+        <div class="why">Specific number. Takes a position. The prestige framing makes the shot land.</div>
+      </div>
+      <div class="quote dont">
+        <div class="lab">✕ Off brand</div>
+        <p>“Team A won their matchup this week with a good score. Nice job to them.”</p>
+        <div class="why">Vague, neutral, and kind in a way nobody asked for. This league doesn't hand out participation trophies.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ---- Templates ---- -->
+  <section>
+    <div class="sechead"><span class="eyebrow">05 — Templates</span><span class="rule"></span></div>
+    <div class="grid g4">
+      <div class="tpl"><img src="previews/newsletter.png" alt=""><div class="cap"><b>Newsletter</b><span>The Lawson Ledger</span></div></div>
+      <div class="tpl"><img src="previews/power-rankings.png" alt=""><div class="cap"><b>Power Rankings</b><span>1–12 with roasts</span></div></div>
+      <div class="tpl"><img src="previews/standings.png" alt=""><div class="cap"><b>Standings</b><span>With playoff cut line</span></div></div>
+      <div class="tpl"><img src="previews/draft-board.png" alt=""><div class="cap"><b>Draft Board</b><span>Snake order, round 1</span></div></div>
+      <div class="tpl"><img src="previews/flyer.png" alt=""><div class="cap"><b>Event Flyer</b><span>680 × 960</span></div></div>
+      <div class="tpl"><img src="previews/transaction-card.png" alt=""><div class="cap"><b>Transactions</b><span>Trades, waivers, drops</span></div></div>
+      <div class="tpl"><img src="previews/awards.png" alt=""><div class="cap"><b>Season Awards</b><span>The hardware</span></div></div>
+      <div class="tpl"><img src="previews/season-wrap.png" alt=""><div class="cap"><b>Season Wrap</b><span>Year in review</span></div></div>
+    </div>
+
+    <div class="sechead" style="margin-top:40px"><span class="eyebrow">Chat Cards · 800 × 800</span><span class="rule"></span></div>
+    <div class="grid g4">
+      <div class="tpl"><img src="previews/chat-card-card-result.png" alt=""><div class="cap"><b>Result</b><span>Matchup final</span></div></div>
+      <div class="tpl"><img src="previews/chat-card-card-high.png" alt=""><div class="cap"><b>High Score</b><span>Weekly best</span></div></div>
+      <div class="tpl"><img src="previews/chat-card-card-alert.png" alt=""><div class="cap"><b>Alert</b><span>Injury / news</span></div></div>
+      <div class="tpl"><img src="previews/chat-card-card-quote.png" alt=""><div class="cap"><b>Quote</b><span>On the record</span></div></div>
+    </div>
+  </section>
+
+</div>
+
+<footer>Lawson Family &amp; Friends Fantasy League · Est. 2020 · Trophy or bust</footer>
+
+</body>
+</html>

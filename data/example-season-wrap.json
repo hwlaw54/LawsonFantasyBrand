@@ -1,0 +1,143 @@
+{
+  "season": "SEASON VI",
+  "season_line": "2025 · Sixth Annual",
+  "opener_head": "The Year the Sofa Kings Ran Out of Competition",
+  "opener_body_1": "Six seasons in, we finally got a wire-to-wire champion. The Sofa Kings drafted well, traded better, and spent fourteen weeks reminding everyone about both. It was the most complete season anyone has put together in this league, and it was almost impossible to enjoy.",
+  "opener_body_2": "Behind them, chaos. Four teams finished 7–7. The playoff cut came down to points-for on the final Sunday. And at the very bottom, the Turf Titans authored the worst season in league history — a 2–12 campaign that began with the second overall pick and ended with a group chat apology.",
+  "closer": "Draft night is the last Saturday in August. The Titans pick first. Bring cash, bring receipts, and bring a better roster than last year.",
+  "footer_line": "Lawson Family & Friends Fantasy League · Season VI in the books",
+  "stats": [
+    {
+      "value": "187.4",
+      "label": "Highest Week",
+      "note": "Blitz Brigade, Week 9"
+    },
+    {
+      "value": "58.1",
+      "label": "Lowest Week",
+      "note": "Turf Titans, Week 11"
+    },
+    {
+      "value": "0.2",
+      "label": "Closest Game",
+      "note": "Week 4, and still discussed"
+    },
+    {
+      "value": "41",
+      "label": "Trades",
+      "note": "A league record. Mostly bad."
+    }
+  ],
+  "timelines": [
+    {
+      "week": "Week 1",
+      "event": "Sofa Kings open with 152. Nobody takes it seriously yet."
+    },
+    {
+      "week": "Week 4",
+      "event": "The 118–118 tie. A missed extra point. A month of arguing."
+    },
+    {
+      "week": "Week 7",
+      "event": "The Bijan trade. The Fumble Fam’s season effectively ends."
+    },
+    {
+      "week": "Week 11",
+      "event": "Turf Titans score 58.1 and start a group chat apology tour."
+    },
+    {
+      "week": "Week 14",
+      "event": "Four teams finish 7–7. The cut line comes down to points-for."
+    },
+    {
+      "week": "Final",
+      "event": "Sofa Kings 141, Blitz Brigade 119. Wire to wire."
+    }
+  ],
+  "finals": [
+    {
+      "pos": "1",
+      "team": "Sofa Kings",
+      "record": "13-1",
+      "pf": "1842",
+      "_class": "is-champ"
+    },
+    {
+      "pos": "2",
+      "team": "Blitz Brigade",
+      "record": "10-4",
+      "pf": "1780",
+      "_class": ""
+    },
+    {
+      "pos": "3",
+      "team": "Purple Reign",
+      "record": "9-5",
+      "pf": "1861",
+      "_class": ""
+    },
+    {
+      "pos": "4",
+      "team": "Hail Mary Honchos",
+      "record": "9-5",
+      "pf": "1745",
+      "_class": ""
+    },
+    {
+      "pos": "5",
+      "team": "The Wolfpack",
+      "record": "8-6",
+      "pf": "1702",
+      "_class": ""
+    },
+    {
+      "pos": "6",
+      "team": "Fourth & Goalies",
+      "record": "7-7",
+      "pf": "1688",
+      "_class": ""
+    },
+    {
+      "pos": "7",
+      "team": "Cleat Chasers",
+      "record": "7-7",
+      "pf": "1670",
+      "_class": ""
+    },
+    {
+      "pos": "8",
+      "team": "Pigskin Prophets",
+      "record": "7-7",
+      "pf": "1655",
+      "_class": ""
+    },
+    {
+      "pos": "9",
+      "team": "Gridiron Grinches",
+      "record": "7-7",
+      "pf": "1640",
+      "_class": ""
+    },
+    {
+      "pos": "10",
+      "team": "The Fumble Fam",
+      "record": "5-9",
+      "pf": "1590",
+      "_class": ""
+    },
+    {
+      "pos": "11",
+      "team": "End Zone Enforcers",
+      "record": "4-10",
+      "pf": "1544",
+      "_class": ""
+    },
+    {
+      "pos": "12",
+      "team": "Turf Titans",
+      "record": "2-12",
+      "pf": "1420",
+      "_class": ""
+    }
+  ]
+}

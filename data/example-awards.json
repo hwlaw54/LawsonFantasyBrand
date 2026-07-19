@@ -1,0 +1,60 @@
+{
+  "season": "SEASON VI",
+  "season_line": "2025 · The Envelope, Please",
+  "champion": "Sofa Kings",
+  "champion_line": "Wire to wire, 13–1, and not one gracious word about it. The best team we’ve had in six years, and the most insufferable.",
+  "runner_up": "Blitz Brigade",
+  "last_place": "Turf Titans",
+  "last_place_line": "Buys the trophy. Wears the trophy. Posts a photo.",
+  "footer_line": "Lawson Family & Friends Fantasy League · Season VI in the books",
+  "awards": [
+    {
+      "_class": "is-honor",
+      "name": "Best Draft Pick",
+      "winner": "Sofa Kings — Bijan Robinson, 2.03",
+      "citation": "Round two. 340 points. Highway robbery in broad daylight."
+    },
+    {
+      "_class": "is-shame",
+      "name": "Biggest Bust",
+      "winner": "Turf Titans — Breece Hall, 1.02",
+      "citation": "Drafted second overall. Dropped in October. A complete round trip."
+    },
+    {
+      "_class": "is-honor",
+      "name": "Waiver Wire Wizard",
+      "winner": "Hail Mary Honchos",
+      "citation": "Picked up three starters off the scrap heap and made the semis with them."
+    },
+    {
+      "_class": "is-shame",
+      "name": "Worst Trade",
+      "winner": "The Fumble Fam",
+      "citation": "Traded Bijan for Rachaad White and a bad feeling. Still hasn’t recovered."
+    },
+    {
+      "_class": "is-honor",
+      "name": "Highest Single Week",
+      "winner": "Blitz Brigade — 187.4",
+      "citation": "Week 9. Everything hit. Told us about it until Week 12."
+    },
+    {
+      "_class": "is-shame",
+      "name": "Most Points, No Title",
+      "winner": "Purple Reign",
+      "citation": "Led the league in scoring. Lost in round one. Fantasy football is cruel."
+    },
+    {
+      "_class": "is-honor",
+      "name": "Best Team Name",
+      "winner": "Fourth & Goalies",
+      "citation": "Six years running. Nobody else is close."
+    },
+    {
+      "_class": "is-shame",
+      "name": "Least Active Manager",
+      "winner": "End Zone Enforcers",
+      "citation": "Started a player on bye. Twice. In the playoffs."
+    }
+  ]
+}

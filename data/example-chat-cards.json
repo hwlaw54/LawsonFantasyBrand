@@ -1,0 +1,28 @@
+{
+  "week": "Week 4",
+  "winner": "Blitz Brigade",
+  "winner_score": "141.0",
+  "loser": "Cleat Chasers",
+  "loser_score": "139.8",
+  "verdict": "Decided by 1.2 points and a kicker nobody wanted.",
+  "score": "141.0",
+  "team": "Blitz Brigade",
+  "note": "Highest score of the week. We will hear about it until Thursday.",
+  "alert_tag": "Injury",
+  "alert_head": "Bijan Robinson Out — Week 5",
+  "alert_body": "Ankle. Listed as day-to-day, which in this league means “start him and find out.” Sofa Kings have no viable backup.",
+  "team_a": "Sofa Kings",
+  "team_a_gets": "Bijan Robinson, 2026 2nd",
+  "team_b": "The Fumble Fam",
+  "team_b_gets": "Rachaad White, Jakobi Meyers",
+  "trade_verdict": "One of these teams is 4-0. One is named the Fumble Fam.",
+  "quote": "I don’t need a running back. I need everyone else to be worse.",
+  "attribution": "Turf Titans, 0-4",
+  "_clips": [
+    "#card-result",
+    "#card-high",
+    "#card-alert",
+    "#card-trade",
+    "#card-quote"
+  ]
+}

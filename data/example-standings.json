@@ -1,0 +1,115 @@
+{
+  "through": "Through Week 4",
+  "season": "SEASON VI",
+  "playoff_note": "Top 6 make the playoffs",
+  "teams": [
+    {
+      "pos": "1",
+      "team": "Sofa Kings",
+      "record": "4-0",
+      "pf": "528.6",
+      "pa": "441.2",
+      "streak": "W4",
+      "_class": "is-first"
+    },
+    {
+      "pos": "2",
+      "team": "Blitz Brigade",
+      "record": "3-1",
+      "pf": "547.9",
+      "pa": "490.3",
+      "streak": "W2",
+      "_class": ""
+    },
+    {
+      "pos": "3",
+      "team": "Hail Mary Honchos",
+      "record": "3-1",
+      "pf": "510.4",
+      "pa": "478.8",
+      "streak": "W3",
+      "_class": ""
+    },
+    {
+      "pos": "4",
+      "team": "The Wolfpack",
+      "record": "3-1",
+      "pf": "489.1",
+      "pa": "466.0",
+      "streak": "L1",
+      "_class": ""
+    },
+    {
+      "pos": "5",
+      "team": "Purple Reign",
+      "record": "2-2",
+      "pf": "472.3",
+      "pa": "470.9",
+      "streak": "W1",
+      "_class": ""
+    },
+    {
+      "pos": "6",
+      "team": "Fourth & Goalies",
+      "record": "2-2",
+      "pf": "468.8",
+      "pa": "462.4",
+      "streak": "L1",
+      "_class": "is-cut"
+    },
+    {
+      "pos": "7",
+      "team": "Cleat Chasers",
+      "record": "2-2",
+      "pf": "470.1",
+      "pa": "481.5",
+      "streak": "L2",
+      "_class": "is-out"
+    },
+    {
+      "pos": "8",
+      "team": "Pigskin Prophets",
+      "record": "2-2",
+      "pf": "455.2",
+      "pa": "479.0",
+      "streak": "W1",
+      "_class": "is-out"
+    },
+    {
+      "pos": "9",
+      "team": "Gridiron Grinches",
+      "record": "1-3",
+      "pf": "449.7",
+      "pa": "495.3",
+      "streak": "L1",
+      "_class": "is-out"
+    },
+    {
+      "pos": "10",
+      "team": "End Zone Enforcers",
+      "record": "1-3",
+      "pf": "441.0",
+      "pa": "502.6",
+      "streak": "L3",
+      "_class": "is-out"
+    },
+    {
+      "pos": "11",
+      "team": "The Fumble Fam",
+      "record": "1-3",
+      "pf": "430.5",
+      "pa": "511.8",
+      "streak": "L1",
+      "_class": "is-out"
+    },
+    {
+      "pos": "12",
+      "team": "Turf Titans",
+      "record": "0-4",
+      "pf": "412.7",
+      "pa": "531.0",
+      "streak": "L4",
+      "_class": "is-out"
+    }
+  ]
+}

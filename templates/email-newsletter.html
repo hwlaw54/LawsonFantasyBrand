@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>The Lawson Ledger</title>
+
+<!--
+  ===========================================================================
+  TEMPLATE · THE LAWSON LEDGER — EMAIL EDITION
+  ===========================================================================
+  This is deliberately NOT built like the other templates. Email clients
+  (Outlook especially) ignore external stylesheets, CSS custom properties,
+  flexbox, grid, and background-image. So this file is:
+
+    · tables for layout, not divs
+    · every style inline, no classes, no :root variables
+    · brand colours written as literal hex
+    · images referenced by ABSOLUTE https URL, because an email has no
+      relative base — this is the reason the repo is public
+    · SVG replaced with PNG; no mail client renders SVG reliably
+    · webfonts declared with real fallbacks, since Outlook will use the
+      fallback no matter what you do (Cinzel → Georgia, the rest → Arial)
+
+  If you edit this, test in Gmail AND Outlook before sending. The other
+  templates are for images and PDFs; this one is for the inbox.
+
+  Set IMG_BASE below to your repo's raw URL if you fork or rename.
+
+  DATA CONTRACT — same as newsletter.html:
+    week, issue_line, lede_eyebrow, lede_headline, lede_byline,
+    lede_body_1, lede_body_2, top_team, top_note, fraud_team, fraud_note,
+    stat_value, stat_note, matchups[], footer_line
+  ===========================================================================
+-->
+
+<style>
+  /* Only for clients that DO support <style>. Everything critical is inline. */
+  @media only screen and (max-width: 620px) {
+    .container { width: 100% !important; }
+    .stack { display: block !important; width: 100% !important; }
+    .px { padding-left: 20px !important; padding-right: 20px !important; }
+    .hl-mobile { font-size: 26px !important; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background-color:#081121;">
+
+<!-- Preheader: shows in the inbox list, hidden in the body. -->
+<div style="display:none;max-height:0;overflow:hidden;opacity:0;">{{LEDE_HEADLINE}}</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#081121;">
+<tr><td align="center" style="padding:24px 12px;">
+
+  <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background-color:#0a1424;">
+
+    <!-- ================= Masthead ================= -->
+    <tr>
+      <td style="background-color:#10233F;padding:22px 28px;border-bottom:3px solid #C8A04B;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td width="52" valign="middle" style="width:52px;">
+            <img src="https://raw.githubusercontent.com/hwlaw54/lawson-league-brand/main/assets/logo/png/monogram-badge-512.png"
+                 width="52" height="52" alt="Lawson League"
+                 style="display:block;width:52px;height:52px;border:0;">
+          </td>
+          <td valign="middle" style="padding-left:14px;">
+            <div style="font-family:Cinzel,Georgia,'Times New Roman',serif;font-weight:700;font-size:24px;color:#F4EEE1;line-height:1.15;">The Lawson Ledger</div>
+            <div style="font-family:'Barlow Condensed',Arial,sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#E0BD6D;padding-top:3px;">Weekly Dispatch of the Family &amp; Friends League</div>
+          </td>
+          <td valign="middle" align="right" style="font-family:Oswald,Arial,sans-serif;font-size:12px;color:#9aa0ab;">
+            <div style="color:#C8A04B;font-weight:600;">{{WEEK}}</div>
+            <div>{{ISSUE_LINE}}</div>
+          </td>
+        </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- ================= Lede ================= -->
+    <tr>
+      <td class="px" style="padding:26px 28px 6px;">
+        <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:11px;color:#C8A04B;">{{LEDE_EYEBROW}}</div>
+        <h1 class="hl-mobile" style="font-family:Oswald,Arial,sans-serif;font-weight:600;text-transform:uppercase;color:#F4EEE1;font-size:30px;line-height:1.08;margin:8px 0 4px;">{{LEDE_HEADLINE}}</h1>
+        <div style="font-family:'Barlow Condensed',Arial,sans-serif;text-transform:uppercase;letter-spacing:1.2px;font-size:11px;color:#9aa0ab;padding-bottom:14px;">{{LEDE_BYLINE}}</div>
+        <p style="font-family:Barlow,Arial,sans-serif;font-size:15px;line-height:1.6;color:#d7dce4;margin:0 0 12px;">{{LEDE_BODY_1}}</p>
+        <p style="font-family:Barlow,Arial,sans-serif;font-size:15px;line-height:1.6;color:#d7dce4;margin:0;">{{LEDE_BODY_2}}</p>
+      </td>
+    </tr>
+
+    <!-- ================= Three callouts ================= -->
+    <tr>
+      <td class="px" style="padding:20px 28px 0;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="stack" width="33%" valign="top" style="padding-right:6px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#122a4d;border-top:3px solid #C8A04B;">
+            <tr><td style="padding:14px 14px 16px;">
+              <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#C8A04B;">Top Dog</div>
+              <div style="font-family:Cinzel,Georgia,serif;font-weight:700;font-size:17px;color:#F4EEE1;padding:5px 0 3px;">{{TOP_TEAM}}</div>
+              <div style="font-family:Barlow,Arial,sans-serif;font-size:12px;color:#9aa0ab;line-height:1.4;">{{TOP_NOTE}}</div>
+            </td></tr>
+            </table>
+          </td>
+          <td class="stack" width="33%" valign="top" style="padding:0 3px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#122a4d;border-top:3px solid #B0303C;">
+            <tr><td style="padding:14px 14px 16px;">
+              <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#B0303C;">Biggest Fraud</div>
+              <div style="font-family:Cinzel,Georgia,serif;font-weight:700;font-size:17px;color:#F4EEE1;padding:5px 0 3px;">{{FRAUD_TEAM}}</div>
+              <div style="font-family:Barlow,Arial,sans-serif;font-size:12px;color:#9aa0ab;line-height:1.4;">{{FRAUD_NOTE}}</div>
+            </td></tr>
+            </table>
+          </td>
+          <td class="stack" width="33%" valign="top" style="padding-left:6px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#122a4d;border-top:3px solid #e6dcc6;">
+            <tr><td style="padding:14px 14px 16px;">
+              <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#e6dcc6;">Stat Line</div>
+              <div style="font-family:Cinzel,Georgia,serif;font-weight:700;font-size:17px;color:#F4EEE1;padding:5px 0 3px;">{{STAT_VALUE}}</div>
+              <div style="font-family:Barlow,Arial,sans-serif;font-size:12px;color:#9aa0ab;line-height:1.4;">{{STAT_NOTE}}</div>
+            </td></tr>
+            </table>
+          </td>
+        </tr>
+        </table>
+      </td>
+    </tr>
+
+    <!-- ================= Scoreboard ================= -->
+    <tr>
+      <td class="px" style="padding:24px 28px 8px;">
+        <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:11px;color:#C8A04B;padding-bottom:8px;">Scoreboard · {{WEEK}}</div>
+
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#081121;">
+          <!-- REPEAT:matchup -->
+          <tr>
+            <td style="padding:9px 12px;border-bottom:1px solid rgba(200,160,75,0.12);font-family:'Barlow Condensed',Arial,sans-serif;font-weight:600;font-size:14px;color:#F4EEE1;">{{WINNER}}</td>
+            <td align="right" style="padding:9px 4px;border-bottom:1px solid rgba(200,160,75,0.12);font-family:Oswald,Arial,sans-serif;font-weight:600;font-size:14px;color:#C8A04B;width:48px;">{{WINNER_SCORE}}</td>
+            <td align="center" style="padding:9px 6px;border-bottom:1px solid rgba(200,160,75,0.12);font-family:Barlow,Arial,sans-serif;font-size:10px;color:#6b7280;width:24px;">vs</td>
+            <td style="padding:9px 4px;border-bottom:1px solid rgba(200,160,75,0.12);font-family:Oswald,Arial,sans-serif;font-weight:600;font-size:14px;color:#9aa0ab;width:48px;">{{LOSER_SCORE}}</td>
+            <td align="right" style="padding:9px 12px;border-bottom:1px solid rgba(200,160,75,0.12);font-family:'Barlow Condensed',Arial,sans-serif;font-weight:600;font-size:14px;color:#9aa0ab;">{{LOSER}}</td>
+          </tr>
+          <!-- /REPEAT:matchup -->
+        </table>
+      </td>
+    </tr>
+
+    <!-- ================= Footer ================= -->
+    <tr>
+      <td align="center" style="background-color:#10233F;padding:16px 28px;border-top:1px solid rgba(200,160,75,0.28);font-family:'Barlow Condensed',Arial,sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#9aa0ab;">
+        {{FOOTER_LINE}}
+      </td>
+    </tr>
+
+  </table>
+
+</td></tr>
+</table>
+
+</body>
+</html>

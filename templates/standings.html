@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Standings — Lawson League</title>
+
+<!--
+  ===========================================================================
+  TEMPLATE · STANDINGS
+  ===========================================================================
+  DATA CONTRACT
+    through       e.g. "Through Week 4"
+    season        e.g. "SEASON VI"
+    playoff_note  e.g. "Top 6 make the playoffs"
+    teams[]       { pos, team, record, pf, pa, streak, _class }
+
+  _class values:
+    is-first  rank 1, gold wash
+    is-cut    LAST team that still makes the playoffs — draws the red cut line
+              beneath it. Move this as the playoff picture changes.
+    is-out    any team below the cut line, greyed back
+              (a team can carry both, e.g. "is-cut")
+
+  Streak colour is derived automatically from the W/L prefix — you do not
+  need to set it.
+  ===========================================================================
+-->
+
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="masthead" style="padding:20px 34px">
+    <div class="masthead-id">
+      <img src="../assets/logo/monogram-badge.svg" alt="Lawson League" style="width:50px;height:50px">
+      <div>
+        <div class="ey" style="font-size:11px;color:var(--gold-400)">{{THROUGH}}</div>
+        <div class="hl" style="font-size:28px;margin-top:2px">Standings</div>
+      </div>
+    </div>
+    <div class="masthead-meta">
+      <div class="big">{{SEASON}}</div>
+      <div>{{PLAYOFF_NOTE}}</div>
+    </div>
+  </div>
+
+  <div class="stand-grid stand-head">
+    <span class="ey" style="font-size:10px;text-align:center">#</span>
+    <span class="ey" style="font-size:10px">Team</span>
+    <span class="ey" style="font-size:10px;text-align:center">W-L</span>
+    <span class="ey" style="font-size:10px;text-align:right">PF</span>
+    <span class="ey" style="font-size:10px;text-align:right">PA</span>
+    <span class="ey" style="font-size:10px;text-align:right">Strk</span>
+  </div>
+
+  <!-- REPEAT:team — 12 rows, ordered by standing. -->
+  <div class="stand-grid stand-row is-first">
+    <span class="num pos-n gold" style="font-size:18px;text-align:center">{{POS}}</span>
+    <span class="team">{{TEAM}}</span>
+    <span class="num" style="font-size:15px;color:var(--cream-100);text-align:center">{{RECORD}}</span>
+    <span class="num gold" style="font-size:14px;text-align:right">{{PF}}</span>
+    <span class="num muted" style="font-size:14px;text-align:right">{{PA}}</span>
+    <span class="{{STREAK_CLASS}}" style="font-family:var(--font-condensed);font-weight:600;font-size:13px;text-align:right">{{STREAK}}</span>
+  </div>
+  <!-- /REPEAT:team -->
+
+  <div style="display:flex;justify-content:space-between;align-items:center;background:var(--gradient-navy);padding:12px 22px">
+    <span style="font-family:var(--font-condensed);text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:var(--text-muted)">
+      <span class="red">— red line —</span> playoff cut
+    </span>
+    <span style="font-family:var(--font-condensed);text-transform:uppercase;letter-spacing:.16em;font-size:11px;color:var(--text-muted)">PF = points for · PA = points against</span>
+  </div>
+
+</div>
+</body>
+</html>

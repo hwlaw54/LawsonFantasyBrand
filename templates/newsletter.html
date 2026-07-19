@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Lawson Ledger — Weekly Recap</title>
+
+<!--
+  ===========================================================================
+  TEMPLATE · THE LAWSON LEDGER (weekly recap newsletter)
+  ===========================================================================
+  Fill the {{PLACEHOLDERS}} below. Blocks marked REPEAT can be duplicated or
+  deleted as needed — keep the surrounding comment markers intact.
+
+  DATA CONTRACT
+    week            e.g. "WEEK 4"
+    issue_line      e.g. "Nov 2025 · Issue 04"
+    lede_eyebrow    e.g. "Game of the Week"
+    lede_headline_HTML
+                    1–2 lines, uppercase display. A key ending in _HTML is
+                    inserted unescaped, so you can use <br> to control the
+                    line break. Also supply a plain `lede_headline` — the
+                    email edition uses it for the inbox preview text.
+    lede_byline     e.g. "Filed by the Commissioner · reads: brutal"
+    lede_body_1/2   two paragraphs of recap prose
+    top_team        + top_note      — the week's best
+    fraud_team      + fraud_note    — the week's biggest disappointment
+    stat_value      + stat_note     — the number that defined the week
+    matchups[]      { winner, winner_score, loser, loser_score }
+    footer_line     standing sign-off
+
+  VOICE: prestige broadcast with teeth. Name names. Never neutral.
+  See .claude/skills/lawson-league/references/voice.md
+  ===========================================================================
+-->
+
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <!-- ---------- Masthead ---------- -->
+  <div class="masthead">
+    <div class="masthead-id">
+      <img src="../assets/logo/monogram-badge.svg" alt="Lawson League">
+      <div>
+        <div class="masthead-title">The Lawson Ledger</div>
+        <div class="masthead-sub">Weekly Dispatch of the Family &amp; Friends League</div>
+      </div>
+    </div>
+    <div class="masthead-meta">
+      <div class="big">{{WEEK}}</div>
+      <div>{{ISSUE_LINE}}</div>
+    </div>
+  </div>
+
+  <!-- ---------- Lede ---------- -->
+  <div class="pad">
+    <div class="ey">{{LEDE_EYEBROW}}</div>
+    <h1 class="hl" style="font-size:38px;margin:8px 0 4px">{{LEDE_HEADLINE_HTML}}</h1>
+    <div style="font-family:var(--font-condensed);text-transform:uppercase;letter-spacing:.12em;font-size:12px;color:var(--text-muted);margin-bottom:16px">{{LEDE_BYLINE}}</div>
+    <p style="font-size:16px;line-height:1.6;margin:0 0 12px;max-width:720px">{{LEDE_BODY_1}}</p>
+    <p style="font-size:16px;line-height:1.6;margin:0;max-width:720px">{{LEDE_BODY_2}}</p>
+  </div>
+
+  <!-- ---------- Three-up callouts ---------- -->
+  <div class="grid-3" style="padding:0 34px 6px">
+    <div class="card card-accent-gold">
+      <div class="ey">Top Dog 👑</div>
+      <div class="serif" style="font-size:19px;margin:6px 0 2px">{{TOP_TEAM}}</div>
+      <div style="font-size:13px;line-height:1.4" class="muted">{{TOP_NOTE}}</div>
+    </div>
+    <div class="card card-accent-red">
+      <div class="ey red">Biggest Fraud</div>
+      <div class="serif" style="font-size:19px;margin:6px 0 2px">{{FRAUD_TEAM}}</div>
+      <div style="font-size:13px;line-height:1.4" class="muted">{{FRAUD_NOTE}}</div>
+    </div>
+    <div class="card card-accent-cream">
+      <div class="ey" style="color:var(--cream-200)">Stat Line</div>
+      <div class="serif" style="font-size:19px;margin:6px 0 2px">{{STAT_VALUE}}</div>
+      <div style="font-size:13px;line-height:1.4" class="muted">{{STAT_NOTE}}</div>
+    </div>
+  </div>
+
+  <!-- ---------- Scoreboard ---------- -->
+  <div style="padding:22px 34px 30px">
+    <div class="ey" style="margin-bottom:8px">Scoreboard · {{WEEK}}</div>
+    <div class="rows">
+
+      <!-- REPEAT:matchup — one row per game. Winner takes .serif-weight name
+           and the gold score; loser stays muted. -->
+      <div class="row">
+        <span style="font-family:var(--font-condensed);font-weight:600;font-size:14px;color:var(--cream-100);flex:1">{{WINNER}}</span>
+        <span class="num gold" style="font-size:15px;width:52px;text-align:right">{{WINNER_SCORE}}</span>
+        <span class="muted" style="margin:0 10px;font-size:11px">vs</span>
+        <span class="num muted" style="font-size:15px;width:52px">{{LOSER_SCORE}}</span>
+        <span class="muted" style="font-family:var(--font-condensed);font-weight:600;font-size:14px;flex:1;text-align:right">{{LOSER}}</span>
+      </div>
+      <!-- /REPEAT:matchup -->
+
+    </div>
+  </div>
+
+  <div class="footer">{{FOOTER_LINE}}</div>
+
+</div>
+</body>
+</html>

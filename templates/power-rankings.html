@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Power Rankings — Lawson League</title>
+
+<!--
+  ===========================================================================
+  TEMPLATE · POWER RANKINGS
+  ===========================================================================
+  DATA CONTRACT
+    week_line     e.g. "Week 4 · The Committee has spoken"
+    season        e.g. "SEASON VI"
+    season_sub    e.g. "12 Teams · 1 Trophy"
+    teams[]       { rank, team, note, record, move, move_class, _class }
+                  move        "⬆ 2" | "⬇ 3" | "— 0"
+                  move_class  MUST match the arrow: "pos" for ⬆,
+                              "red" for ⬇, "muted" for —
+                  _class      "is-first" on rank 1 only (gold wash)
+    footer_line
+
+  The note is the whole point. One line, specific, a little cruel.
+  ===========================================================================
+-->
+
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="_shared.css">
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="masthead" style="padding:20px 34px">
+    <div class="masthead-id">
+      <img src="../assets/logo/monogram-badge.svg" alt="Lawson League" style="width:50px;height:50px">
+      <div>
+        <div class="ey" style="font-size:11px;color:var(--gold-400)">{{WEEK_LINE}}</div>
+        <div class="hl" style="font-size:28px;margin-top:2px">Power Rankings</div>
+      </div>
+    </div>
+    <div class="masthead-meta">
+      <div class="big">{{SEASON}}</div>
+      <div>{{SEASON_SUB}}</div>
+    </div>
+  </div>
+
+  <div class="rank-head">
+    <span style="width:40px"></span>
+    <span class="ey" style="flex:1;font-size:11px">Team &amp; the honest truth</span>
+    <span class="ey" style="width:52px;text-align:center;font-size:11px">Rec</span>
+    <span class="ey" style="width:44px;text-align:right;font-size:11px">Move</span>
+  </div>
+
+  <!-- REPEAT:team — 12 rows. Add "is-first" to rank 1 only. -->
+  <div class="rank-row is-first">
+    <span class="rank-n">{{RANK}}</span>
+    <div style="flex:1;min-width:0">
+      <div class="rank-team">{{TEAM}}</div>
+      <div class="rank-note">{{NOTE}}</div>
+    </div>
+    <span class="rank-rec">{{RECORD}}</span>
+    <span class="rank-move {{MOVE_CLASS}}">{{MOVE}}</span>
+  </div>
+  <!-- /REPEAT:team -->
+
+  <div class="footer">{{FOOTER_LINE}}</div>
+
+</div>
+</body>
+</html>

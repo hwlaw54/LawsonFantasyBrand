@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Transaction — Lawson League</title>
+
+<!--
+  ===========================================================================
+  TEMPLATE · LEAGUE TRANSACTION  (860 wide, grows to fit)
+  ===========================================================================
+  Trades, waiver claims, roster moves. One sheet can carry several
+  transactions — good for a Tuesday "here's what happened" post.
+
+  DATA CONTRACT
+    date_line      e.g. "Tuesday · Oct 14"
+    season         e.g. "SEASON VI"
+    season_sub     e.g. "Transactions are final"
+    transactions[] {
+      kind         "TRADE" | "WAIVER" | "DROP" | "ADD"  (drives the tag colour
+                   via _class: is-trade | is-waiver | is-drop | is-add)
+      _class
+      headline     one line, e.g. "Sofa Kings fleece the Fumble Fam"
+      side_a       team name           side_b
+      gets_a       what A receives     gets_b
+      verdict      the commissioner's one-line read. This is the fun part.
+    }
+    footer_line
+  ===========================================================================
+-->
+
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  .txn {
+    border: 1px solid var(--border-hairline);
+    border-left: 4px solid var(--gold-500);
+    border-radius: 8px;
+    background: var(--gradient-navy-flat);
+    padding: 20px 24px;
+    margin-bottom: 14px;
+  }
+  .txn.is-waiver { border-left-color: var(--cream-200); }
+  .txn.is-drop   { border-left-color: var(--red-500); }
+  .txn.is-add    { border-left-color: var(--positive); }
+
+  .txn-tag {
+    display: inline-block;
+    font-family: var(--font-condensed);
+    font-weight: 700; text-transform: uppercase;
+    letter-spacing: .18em; font-size: 11px;
+    color: var(--navy-700);
+    background: var(--gold-500);
+    padding: 3px 10px; border-radius: 2px;
+  }
+  .txn.is-waiver .txn-tag { background: var(--cream-200); }
+  .txn.is-drop   .txn-tag { background: var(--red-500); color: #fff; }
+  .txn.is-add    .txn-tag { background: var(--positive); color: #fff; }
+
+  .txn-head {
+    font-family: var(--font-display); font-weight: 600;
+    text-transform: uppercase; font-size: 22px;
+    color: var(--cream-100); margin: 10px 0 16px; line-height: 1.1;
+  }
+
+  .swap { display: grid; grid-template-columns: 1fr 44px 1fr; gap: 14px; align-items: stretch; }
+  .swap-side {
+    background: var(--navy-900);
+    border: 1px solid rgba(200,160,75,.14);
+    border-radius: 6px;
+    padding: 12px 14px;
+  }
+  .swap-team {
+    font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .1em;
+    font-size: 12px; color: var(--gold-400); margin-bottom: 6px;
+  }
+  .swap-gets { font-size: 15px; color: var(--cream-100); line-height: 1.4; }
+  .swap-arrow {
+    display: grid; place-items: center;
+    font-family: var(--font-crest); font-weight: 900;
+    font-size: 26px; color: var(--gold-600);
+  }
+  .txn-verdict {
+    margin-top: 14px; padding-top: 12px;
+    border-top: 1px solid rgba(200,160,75,.14);
+    font-size: 14.5px; line-height: 1.5; color: var(--text-muted);
+  }
+  .txn-verdict b {
+    color: var(--gold-500); font-family: var(--font-condensed);
+    font-weight: 700; text-transform: uppercase; letter-spacing: .1em;
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="masthead" style="padding:20px 34px">
+    <div class="masthead-id">
+      <img src="../assets/logo/monogram-badge.svg" alt="Lawson League" style="width:50px;height:50px">
+      <div>
+        <div class="ey" style="font-size:11px;color:var(--gold-400)">{{DATE_LINE}}</div>
+        <div class="hl" style="font-size:28px;margin-top:2px">Transactions</div>
+      </div>
+    </div>
+    <div class="masthead-meta">
+      <div class="big">{{SEASON}}</div>
+      <div>{{SEASON_SUB}}</div>
+    </div>
+  </div>
+
+  <div style="padding:24px 30px">
+    <!-- REPEAT:transaction -->
+    <div class="txn is-trade">
+      <span class="txn-tag">{{KIND}}</span>
+      <div class="txn-head">{{HEADLINE}}</div>
+
+      <div class="swap">
+        <div class="swap-side">
+          <div class="swap-team">{{SIDE_A}} gets</div>
+          <div class="swap-gets">{{GETS_A}}</div>
+        </div>
+        <div class="swap-arrow">⇄</div>
+        <div class="swap-side">
+          <div class="swap-team">{{SIDE_B}} gets</div>
+          <div class="swap-gets">{{GETS_B}}</div>
+        </div>
+      </div>
+
+      <div class="txn-verdict"><b>Commissioner's read:</b> {{VERDICT}}</div>
+    </div>
+    <!-- /REPEAT:transaction -->
+  </div>
+
+  <div class="footer">{{FOOTER_LINE}}</div>
+
+</div>
+</body>
+</html>

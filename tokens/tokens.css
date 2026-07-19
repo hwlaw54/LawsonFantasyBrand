@@ -1,0 +1,176 @@
+/* ============================================================
+   LAWSON FAMILY & FRIENDS FANTASY LEAGUE
+   Design tokens — the single source of truth for the brand.
+
+   Lifted verbatim from the approved Claude Design system so the
+   values never drift. If a colour or size needs to change, it
+   changes HERE and nowhere else.
+
+   Usage:
+     <link rel="stylesheet" href="../assets/fonts/fonts.css">
+     <link rel="stylesheet" href="../tokens/tokens.css">
+   ============================================================ */
+
+:root {
+  /* ---- Navy — primary brand ground ---- */
+  --navy-900: #081121;
+  --navy-800: #0a1424;
+  --navy-700: #10233F;   /* the brand navy */
+  --navy-600: #16305a;
+  --navy-500: #1d3d6e;
+
+  /* ---- Gold — championship accent ---- */
+  --gold-600: #a8823a;
+  --gold-500: #C8A04B;   /* the brand gold */
+  --gold-400: #E0BD6D;
+
+  /* ---- Cream — light surfaces & text on navy ---- */
+  --cream-100: #F4EEE1;
+  --cream-200: #e6dcc6;
+
+  /* ---- Blood red — trash-talk / alert accent ---- */
+  --red-600: #7d1f2b;
+  --red-500: #B0303C;
+
+  /* ---- Neutrals ---- */
+  --ink: #0a1424;
+  --slate-500: #6b7280;
+  --slate-400: #9aa0ab;
+  --slate-300: #c3c8d1;
+  --white: #ffffff;
+
+  /* ---- Semantic aliases — prefer these in templates ---- */
+  --bg-primary: var(--navy-700);
+  --bg-deep: var(--navy-900);
+  --surface-card: var(--navy-600);
+  --surface-raised: #1a3663;
+  --border-gold: var(--gold-500);
+  --border-hairline: rgba(200, 160, 75, .28);
+  --text-heading: var(--cream-100);
+  --text-body: #d7dce4;
+  --text-muted: var(--slate-400);
+  --text-on-gold: var(--navy-700);
+  --accent: var(--gold-500);
+  --accent-hover: var(--gold-400);
+  --alert: var(--red-500);
+  --positive: #4a9d6a;
+  --negative: var(--red-500);
+}
+
+:root {
+  /* ---- Type families ---- */
+  --font-crest: 'Cinzel', Georgia, 'Times New Roman', serif;
+  --font-display: 'Oswald', 'Barlow Condensed', sans-serif;
+  --font-condensed: 'Barlow Condensed', sans-serif;
+  --font-body: 'Barlow', system-ui, -apple-system, sans-serif;
+  --font-numeral: 'Oswald', sans-serif;
+
+  /* ---- Type scale ---- */
+  --fs-display: 64px;
+  --fs-h1: 40px;
+  --fs-h2: 28px;
+  --fs-h3: 20px;
+  --fs-label: 13px;
+  --fs-body: 16px;
+  --fs-small: 13px;
+
+  /* ---- The signature broadcast label treatment ---- */
+  --tracking-label: .18em;
+  --tracking-crest: .06em;
+
+  --weight-crest: 800;
+  --weight-display: 600;
+  --weight-body: 400;
+}
+
+:root {
+  /* ---- Space scale ---- */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* ---- Radii ---- */
+  --radius-sm: 2px;
+  --radius-md: 6px;
+  --radius-lg: 12px;
+  --radius-pill: 999px;
+
+  /* ---- Containers ---- */
+  --container-narrow: 640px;
+  --container: 960px;
+  --container-wide: 1200px;
+}
+
+:root {
+  /* ---- Elevation ---- */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, .35);
+  --shadow-card: 0 24px 60px -30px rgba(0, 0, 0, .85);
+  --shadow-crest: 0 14px 28px -10px rgba(0, 0, 0, .6);
+  --shadow-inset-gold: inset 0 0 0 1px rgba(200, 160, 75, .4);
+  --ring-gold: 0 0 0 1px var(--gold-500);
+
+  /* ---- Gradients ---- */
+  --gradient-navy: radial-gradient(130% 110% at 50% 0%, #16305a 0%, #10233F 42%, #081121 100%);
+  --gradient-navy-flat: linear-gradient(180deg, #122a4d, #0a1424);
+  --gradient-gold: linear-gradient(135deg, #E0BD6D 0%, #C8A04B 55%, #a8823a 100%);
+  --gradient-field: repeating-linear-gradient(90deg, #0d1e3a 0 46px, #0f234180 46px 48px);
+
+  /* ---- Motion ---- */
+  --ease-broadcast: cubic-bezier(.2, .7, .2, 1);
+  --dur: 180ms;
+}
+
+/* ============================================================
+   Shared primitives
+   The handful of patterns every template repeats. Kept here so
+   a newsletter and a chat card can't drift apart.
+   ============================================================ */
+
+/* The signature broadcast label: condensed, uppercase, wide-tracked, gold. */
+.lff-eyebrow {
+  font-family: var(--font-condensed);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  font-size: var(--fs-label);
+  color: var(--accent);
+}
+
+/* Section heading rule that trails off to the right. */
+.lff-rule {
+  height: 1px;
+  background: linear-gradient(90deg, var(--border-hairline), transparent);
+  flex: 1;
+}
+
+.lff-card {
+  background: var(--gradient-navy-flat);
+  border: 1px solid var(--border-hairline);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+/* Numerals — scores, ranks, records. Tabular so columns line up. */
+.lff-num {
+  font-family: var(--font-numeral);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .02em;
+}
+
+.lff-gold-bar {
+  background: var(--gradient-gold);
+  color: var(--text-on-gold);
+}
+
+/* Print / PNG export: kill margins and force colour fidelity. */
+@media print {
+  @page { margin: 0; }
+  body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}

@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Season in Review — Lawson League</title>
+
+<!--
+  ===========================================================================
+  TEMPLATE · SEASON IN REVIEW
+  ===========================================================================
+  The long one. Sent once, at the end, and read properly.
+
+  DATA CONTRACT
+    season          e.g. "SEASON VI"
+    season_line     e.g. "2025 · Sixth Annual"
+    opener_head     the season's story in one uppercase line
+    opener_body_1/2 two paragraphs
+    stats[]         { value, label, note }  — 4 headline numbers
+    timeline[]      { week, event }         — the season's turning points
+    finals[]        { pos, team, record, pf } — final standings, 12 rows
+    closer          one paragraph to sign off on
+    footer_line
+  ===========================================================================
+-->
+
+<link rel="stylesheet" href="../assets/fonts/fonts.css">
+<link rel="stylesheet" href="../tokens/tokens.css">
+<link rel="stylesheet" href="_shared.css">
+<style>
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .stat {
+    background: var(--gradient-navy-flat);
+    border: 1px solid var(--border-hairline);
+    border-top: 3px solid var(--gold-500);
+    border-radius: 8px;
+    padding: 16px 16px 14px;
+    text-align: center;
+  }
+  .stat-value {
+    font-family: var(--font-numeral); font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    font-size: 40px; line-height: 1; color: var(--gold-500);
+  }
+  .stat-label {
+    font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .14em;
+    font-size: 10.5px; color: var(--cream-200); margin: 8px 0 4px;
+  }
+  .stat-note { font-size: 12px; color: var(--text-muted); line-height: 1.35; }
+
+  .tl { border-left: 2px solid rgba(200,160,75,.3); padding-left: 20px; margin-left: 6px; }
+  .tl-item { position: relative; padding-bottom: 16px; }
+  .tl-item::before {
+    content: ""; position: absolute;
+    left: -26px; top: 5px; width: 9px; height: 9px;
+    border-radius: 50%; background: var(--gold-500);
+  }
+  .tl-week {
+    font-family: var(--font-condensed); font-weight: 700;
+    text-transform: uppercase; letter-spacing: .16em;
+    font-size: 11px; color: var(--gold-500);
+  }
+  .tl-event { font-size: 15px; color: var(--text-body); line-height: 1.45; margin-top: 2px; }
+
+  .final-row {
+    display: grid; grid-template-columns: 34px 1fr 56px 72px;
+    align-items: center; gap: 8px;
+    padding: 9px 16px;
+    border-bottom: 1px solid rgba(200,160,75,.1);
+  }
+  .final-row.is-champ { background: linear-gradient(90deg, rgba(200,160,75,.14), transparent); }
+  .final-row .t { font-family: var(--font-condensed); font-weight: 600; font-size: 15px; color: var(--cream-100); }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <div class="masthead" style="padding:20px 34px">
+    <div class="masthead-id">
+      <img src="../assets/logo/monogram-badge.svg" alt="Lawson League" style="width:50px;height:50px">
+      <div>
+        <div class="ey" style="font-size:11px;color:var(--gold-400)">{{SEASON_LINE}}</div>
+        <div class="hl" style="font-size:28px;margin-top:2px">Season in Review</div>
+      </div>
+    </div>
+    <div class="masthead-meta">
+      <div class="big">{{SEASON}}</div>
+      <div>Wrapped</div>
+    </div>
+  </div>
+
+  <!-- ---- Opener ---- -->
+  <div class="pad">
+    <h1 class="hl" style="font-size:34px;margin:0 0 14px">{{OPENER_HEAD}}</h1>
+    <p style="font-size:16px;line-height:1.65;margin:0 0 12px;max-width:740px">{{OPENER_BODY_1}}</p>
+    <p style="font-size:16px;line-height:1.65;margin:0;max-width:740px">{{OPENER_BODY_2}}</p>
+  </div>
+
+  <!-- ---- Headline numbers ---- -->
+  <div style="padding:0 34px">
+    <div class="ey" style="margin-bottom:12px">By the Numbers</div>
+    <div class="stat-grid">
+      <!-- REPEAT:stat -->
+      <div class="stat">
+        <div class="stat-value">{{VALUE}}</div>
+        <div class="stat-label">{{LABEL}}</div>
+        <div class="stat-note">{{NOTE}}</div>
+      </div>
+      <!-- /REPEAT:stat -->
+    </div>
+  </div>
+
+  <!-- ---- Timeline ---- -->
+  <div class="pad">
+    <div class="ey" style="margin-bottom:14px">How It Happened</div>
+    <div class="tl">
+      <!-- REPEAT:timeline -->
+      <div class="tl-item">
+        <div class="tl-week">{{WEEK}}</div>
+        <div class="tl-event">{{EVENT}}</div>
+      </div>
+      <!-- /REPEAT:timeline -->
+    </div>
+  </div>
+
+  <!-- ---- Final standings ---- -->
+  <div style="padding:0 34px 24px">
+    <div class="ey" style="margin-bottom:10px">Final Standings</div>
+    <div class="rows">
+      <!-- REPEAT:final -->
+      <div class="final-row is-champ">
+        <span class="num gold" style="font-size:16px;text-align:center">{{POS}}</span>
+        <span class="t">{{TEAM}}</span>
+        <span class="num" style="font-size:14px;color:var(--cream-100);text-align:center">{{RECORD}}</span>
+        <span class="num muted" style="font-size:13px;text-align:right">{{PF}}</span>
+      </div>
+      <!-- /REPEAT:final -->
+    </div>
+  </div>
+
+  <!-- ---- Closer ---- -->
+  <div style="padding:0 34px 32px">
+    <div class="note-box" style="border-style:solid">
+      <span class="note-label">Until next year:</span> {{CLOSER}}
+    </div>
+  </div>
+
+  <div class="footer">{{FOOTER_LINE}}</div>
+
+</div>
+</body>
+</html>

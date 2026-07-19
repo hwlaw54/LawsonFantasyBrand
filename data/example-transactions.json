@@ -1,0 +1,38 @@
+{
+  "date_line": "Tuesday · Oct 14",
+  "season": "SEASON VI",
+  "season_sub": "Transactions are final",
+  "footer_line": "All trades subject to commissioner review · LFF Est. 2020",
+  "transactions": [
+    {
+      "kind": "Trade",
+      "_class": "is-trade",
+      "headline": "Sofa Kings fleece the Fumble Fam",
+      "side_a": "Sofa Kings",
+      "gets_a": "Bijan Robinson, 2026 2nd",
+      "side_b": "The Fumble Fam",
+      "gets_b": "Rachaad White, Jakobi Meyers",
+      "verdict": "One of these teams is 4-0 and one of them is named the Fumble Fam. Draw your own conclusions."
+    },
+    {
+      "kind": "Waiver",
+      "_class": "is-waiver",
+      "headline": "Purple Reign burn their top claim on a backup tight end",
+      "side_a": "Purple Reign",
+      "gets_a": "Tucker Kraft ($47 FAAB)",
+      "side_b": "Free Agency",
+      "gets_b": "Dropped: Noah Fant",
+      "verdict": "Forty-seven dollars. For a tight end. In October. Bold."
+    },
+    {
+      "kind": "Drop",
+      "_class": "is-drop",
+      "headline": "Turf Titans cut bait on their first-round pick",
+      "side_a": "Turf Titans",
+      "gets_a": "Nothing. Nothing at all.",
+      "side_b": "Waiver Wire",
+      "gets_b": "Breece Hall",
+      "verdict": "When you’re 0-4, every move looks like a cry for help. This one is."
+    }
+  ]
+}
