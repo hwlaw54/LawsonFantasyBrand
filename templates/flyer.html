@@ -12,12 +12,21 @@
   championship party, punishment day.
 
   DATA CONTRACT
-    kicker        e.g. "The Sixth Annual · You're Invited"
+    kicker        e.g. "You're Invited"
     title_1/2     the big Cinzel headline, two stacked lines
     subtitle      e.g. "12 managers · 1 trophy · zero mercy"
     details[]     { label, value }  — When / Where / Format / Stakes
     cta           e.g. "Confirm your seat by Aug 22"
     footer_line
+
+  OPTIONAL — group-chat invitation
+    qr_image      path to a QR image, e.g. "local/whatsapp-group-qr.png"
+    qr_caption    e.g. "Scan to join the league group chat"
+
+    Leave both out and the QR block renders empty. A WhatsApp QR is a live
+    credential, not a graphic — it lives in local/ and never gets committed.
+    Render invitations with --out local/renders and send the PNG directly.
+    See local/README.md.
   ===========================================================================
 -->
 
@@ -60,6 +69,30 @@
     padding: 14px 30px;
     border-radius: 4px;
   }
+  /* Optional QR block for group-chat invitations.
+     Sized generously on purpose: the source is usually a screenshot in which
+     the actual code occupies only part of the frame, so a "reasonable
+     looking" 130px block can leave the code too small to scan. A QR that
+     doesn't scan is a broken invitation, so err large.
+     Cream plate behind it because scanners need high contrast. */
+  .qr-block { margin-top: 30px; margin-bottom: 34px; }
+  .qr-block img {
+    width: 210px; height: 210px;
+    object-fit: contain;
+    display: block; margin: 0 auto;
+    background: var(--cream-100);
+    padding: 8px;
+    border-radius: var(--radius-md);
+    border: 2px solid var(--gold-500);
+  }
+  .qr-cap {
+    margin-top: 12px;
+    font-family: var(--font-condensed);
+    text-transform: uppercase;
+    letter-spacing: .18em;
+    font-size: 12px;
+    color: var(--gold-400);
+  }
   .flyer-foot {
     position: absolute; bottom: 20px; left: 0; right: 0;
     text-align: center;
@@ -95,6 +128,13 @@
     </div>
 
     <div class="cta">{{CTA}}</div>
+
+    <!-- OPTIONAL:qr — drops out entirely unless qr_image is supplied. -->
+    <div class="qr-block">
+      <img src="{{QR_IMAGE}}" alt="">
+      <div class="qr-cap">{{QR_CAPTION}}</div>
+    </div>
+    <!-- /OPTIONAL:qr -->
   </div>
 
   <div class="flyer-foot">{{FOOTER_LINE}}</div>

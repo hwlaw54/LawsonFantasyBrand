@@ -10,13 +10,13 @@
   ===========================================================================
   DATA CONTRACT
     week_line     e.g. "Week 4 · The Committee has spoken"
-    season        e.g. "SEASON VI"
+    season        e.g. "2025 SEASON"
     season_sub    e.g. "12 Teams · 1 Trophy"
-    teams[]       { rank, team, note, record, move, move_class, _class }
-                  move        "⬆ 2" | "⬇ 3" | "— 0"
-                  move_class  MUST match the arrow: "pos" for ⬆,
-                              "red" for ⬇, "muted" for —
-                  _class      "is-first" on rank 1 only (gold wash)
+    teams[]       { rank, team, note, record, move, _class }
+                  move    "⬆ 2" | "⬇ 3" | "— 0"
+                          The colour is derived from the arrow automatically,
+                          so it can never disagree with the direction.
+                  _class  "is-first" on rank 1 only (gold wash)
     footer_line
 
   The note is the whole point. One line, specific, a little cruel.

@@ -6,7 +6,7 @@ description: Produce on-brand content for the Lawson Family & Friends Fantasy Fo
 # Lawson League content
 
 Henry is the commissioner of the Lawson Family & Friends Fantasy Football League
-— 12 teams, established 2020, currently in its sixth season. This skill turns a
+— 12 teams, established 2020. This skill turns a
 request like *"make Week 5 power rankings"* into a finished, on-brand PNG.
 
 ## How it works
@@ -87,10 +87,49 @@ newsletter when it's a weekly wrap.
 
 Pull these from `tokens.json` → `brand` rather than retyping:
 
-- 12 teams, established 2020, currently Season VI
+- 12 teams, established 2020
 - Yahoo Fantasy, snake draft, 15 rounds
 - Top 6 make the playoffs
 - Last place buys the trophy — and wears it
+
+### Never number the seasons
+
+**There was no 2023 season.** That means the ordinal count and the year never
+line up — 2026 is the *sixth* annual, not the seventh. Any "Sixth Annual" or
+"Season VI" label is a trap that goes stale or reads wrong depending on how
+you count.
+
+Use **"Est. 2020"** and a **plain year** instead. `"season": "2025 SEASON"`,
+`"2026 Draft"`, `"the 2025 season in the books"`. Both facts stay true from
+every angle and nothing needs recounting.
+
+## Local-only assets
+
+`local/` is **gitignored** and holds things that must not reach the public
+repo — currently `local/whatsapp-group-qr.png`, the league group-chat join
+code.
+
+A WhatsApp QR is a live credential, not a graphic: published publicly, anyone
+who finds the repo could join the family group chat, and it stays live in git
+history and caches even after deletion.
+
+So when Henry asks for an invitation carrying the QR:
+
+```json
+{
+  "qr_image": "local/whatsapp-group-qr.png",
+  "qr_caption": "Scan to join the league group chat"
+}
+```
+
+```bash
+node scripts/render.js flyer data/invitation.json --png --out local/renders
+```
+
+**Always render these to `local/renders/`, never to `output/` or
+`docs/previews/`.** Tell Henry to send the PNG directly rather than posting it
+anywhere public. Never commit the QR, a render containing it, or a data file
+referencing it. See `local/README.md`.
 
 Henry is the commissioner and writes in the first person as "the Commissioner"
 when the piece needs a byline.

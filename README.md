@@ -8,7 +8,7 @@
 Logos, fonts, colours, and every template needed to make a newsletter, an
 announcement, or a graphic without starting from scratch.
 
-*12 teams · Est. 2020 · Season VI*
+*12 teams · Est. 2020*
 
 </div>
 

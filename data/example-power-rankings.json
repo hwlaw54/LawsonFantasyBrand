@@ -2,7 +2,7 @@
   "_comment": "Example data for templates/power-rankings.html. Copy this, change the values, run: node scripts/render.js power-rankings data/your-file.json --png",
 
   "week_line": "Week 4 · The Committee has spoken",
-  "season": "SEASON VI",
+  "season": "2025 SEASON",
   "season_sub": "12 Teams · 1 Trophy",
   "footer_line": "Rankings are subjective, final, and designed to make you mad · LFF Est. 2020",
 

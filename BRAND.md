@@ -1,7 +1,7 @@
 # Lawson League — Brand Guidelines
 
 The Lawson Family &amp; Friends Fantasy Football League. Twelve teams,
-established 2020, currently in its sixth season. Henry Lawson is commissioner.
+established 2020. Henry Lawson is commissioner.
 
 The identity has one job: make a family fantasy league feel like a broadcast
 property that has been running for decades — and then undercut that gravity

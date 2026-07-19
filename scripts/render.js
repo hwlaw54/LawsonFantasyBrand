@@ -113,12 +113,26 @@ function expandRepeats(html, data) {
   });
 }
 
+/**
+ * `<!-- OPTIONAL:qr -->…<!-- /OPTIONAL:qr -->` keeps the block only when
+ * data.qr_image exists. Used for the flyer's invitation QR, which is a
+ * local-only asset most flyers won't carry.
+ */
+function resolveOptionals(html, data) {
+  const re = /[ \t]*<!--\s*OPTIONAL:(\w+)\s*(?:—[^>]*?)?-->([\s\S]*?)<!--\s*\/OPTIONAL:\1\s*-->\n?/g;
+  return html.replace(re, (whole, name, block) => {
+    const key = Object.keys(data).find((k) => k.toLowerCase() === `${name}_image`);
+    return key && data[key] ? block : '';
+  });
+}
+
 function render(templateName, data) {
   const file = path.join(TEMPLATES, templateName.replace(/\.html$/, '') + '.html');
   if (!fs.existsSync(file)) {
     throw new Error(`No template at ${file}`);
   }
   let html = fs.readFileSync(file, 'utf8');
+  html = resolveOptionals(html, data);
   html = expandRepeats(html, data);
   html = substitute(html, [data]);
 
@@ -152,11 +166,14 @@ async function main() {
   // Written into templates/ so the relative ../assets and ../tokens links
   // still resolve; then moved. Simpler: rewrite the links to absolute file
   // URLs so the output is portable to any directory.
-  const fixed = html.replace(/(href|src)="\.\.\/(assets|tokens)\//g, (m, attr, dir) => {
-    return `${attr}="${path.join(ROOT, dir).replace(/\\/g, '/')}/`;
-  }).replace(/(href|src)="_shared\.css"/g, (m, attr) =>
-    `${attr}="${path.join(TEMPLATES, '_shared.css').replace(/\\/g, '/')}"`
-  );
+  const abs = (...p) => path.join(ROOT, ...p).replace(/\\/g, '/');
+  const fixed = html
+    .replace(/(href|src)="\.\.\/(assets|tokens)\//g, (m, attr, dir) => `${attr}="${abs(dir)}/`)
+    .replace(/(href|src)="_shared\.css"/g, (m, attr) => `${attr}="${abs('templates', '_shared.css')}"`)
+    // Repo-root-relative paths supplied through data — e.g. a flyer's
+    // "local/whatsapp-group-qr.png". Resolve against the repo, not the
+    // output directory.
+    .replace(/(href|src)="(local|assets|data)\//g, (m, attr, dir) => `${attr}="${abs(dir)}/`);
 
   fs.writeFileSync(htmlOut, fixed);
   console.log(`  html  ${path.relative(ROOT, htmlOut)}`);

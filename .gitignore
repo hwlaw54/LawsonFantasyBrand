@@ -8,12 +8,20 @@ output/
 # Re-fetch with: node scripts/fetch-fonts.js
 scripts/.ttf-cache/
 
-# Personal files that must never reach a public repo. A stray WhatsApp QR
-# screenshot (which encodes a phone number and acts as a contact credential)
-# was sitting in this folder during setup — keep that class of file out.
+# Local-only assets. This repo is PUBLIC, so anything that acts as a
+# credential or contains personal contact details lives here and is never
+# committed. See local/README.md (also ignored) for what belongs.
+local/
+
+# Belt and braces for the same class of file if it lands outside local/.
 *WhatsApp*
-*QR code*
+*QR*code*
 /*.png
+
+# Anything rendered from a local-only asset. Invitations carry the group QR,
+# so they stay out of the repo too.
+docs/previews/invitation*
+docs/previews/*-local.*
 
 # Scratch
 assets/logo/_contact-sheet.html
