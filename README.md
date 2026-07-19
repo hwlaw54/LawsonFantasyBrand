@@ -136,7 +136,7 @@ Because this repo is public, any file works as a direct URL — which is how the
 email template embeds the logo:
 
 ```
-https://raw.githubusercontent.com/hwlaw54/lawson-league-brand/main/assets/logo/png/crest-full-512.png
+https://raw.githubusercontent.com/hwlaw54/LawsonFantasyBrand/main/assets/logo/png/crest-full-512.png
 ```
 
 ## Scripts
