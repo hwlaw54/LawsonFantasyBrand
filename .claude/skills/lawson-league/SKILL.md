@@ -27,6 +27,10 @@ adding one rather than improvising a one-off that drifts from the system.
 
 ## The workflow
 
+Henry asks for a thing ("I need a commissioner note", "make a draft night
+flyer", "post that Blitz won"). You pick the template, write the copy, render
+it, and hand him something he can send. He does the sending.
+
 1. **Work out which template.** See the table below.
 2. **Read the template's header comment.** Each file opens with its exact data
    contract. That comment is the source of truth, not this page.
@@ -34,10 +38,67 @@ adding one rather than improvising a one-off that drifts from the system.
 4. **Write the copy.** This is the part that matters — see
    [references/voice.md](references/voice.md). Get the facts from Henry; never
    invent scores, records, or player news.
-5. **Render with `--png`.**
+5. **Render.** `--png` for anything that ships as an image. Email formats need
+   the HTML too (see Delivering it, below).
 6. **Check the render.** Actually look at the PNG. Confirm no `{{PLACEHOLDER}}`
    survived — the renderer warns, but read the output.
-7. **Save to `output/<season>/week-<n>/`** for anything Henry will reuse.
+7. **Tell him exactly how to send it**, per the delivery table below. Finish by
+   giving him the file path, not just "it's rendered."
+
+Anything carrying real names, the WhatsApp link, or the QR renders to
+`local/renders/`. Everything else goes to `output/`.
+
+## Delivering it
+
+Two delivery paths. Pick by format, and **tell Henry which one applies** —
+don't leave him to work it out.
+
+| What you made | How it goes out |
+|---|---|
+| Any PNG (chat cards, flyers, rankings, standings, awards…) | Give him the file path. He attaches/posts/texts it directly. Done. |
+| Email formats (`commissioner-letter`, `email-newsletter`) | Render the HTML, then he copies it out of a browser into Gmail — steps below. |
+
+### Email: render → browser → copy → paste into Gmail
+
+```bash
+node scripts/render.js commissioner-letter local/my-letter.json --png --out local/renders
+```
+
+Then tell him, in these words:
+
+1. Open `local/renders/commissioner-letter.html` in Chrome
+2. **Ctrl+A**, **Ctrl+C**
+3. Gmail → **Compose** → click into the body → **Ctrl+V**
+4. Add subject + recipients, edit anything he wants, send
+
+Gmail converts the images to inline attachments on paste, which is *better*
+than remote-hosted images — they travel with the message, so no recipient gets
+an "images blocked" prompt. Render the `--png` too; it's the quickest way for
+him to eyeball the result before pasting.
+
+### Do NOT use the Gmail `create_draft` connector for these
+
+**It silently strips every `<img>` tag from the HTML body.** This was tested
+directly: an email sent with both an external-URL image and a CID inline
+attachment arrived with *both* `<img>` tags deleted from the markup — no
+broken-image icon, no "images blocked" banner, no alt text, just gone. The
+attachment survived only as a downloadable file, because the tag that would
+have displayed it was removed.
+
+That is a hard limit of the connector, and no hosting change fixes it. Four
+drafts were burned chasing image *hosting* (raw.githubusercontent.com →
+GitHub Pages) before anyone fetched the delivered message and looked at the
+actual HTML. **If an image doesn't appear in an email, fetch the delivered
+message with `get_message` and check whether the `<img>` tag is even present
+before theorising about hosts, headers, or caches.**
+
+The connector is still fine for a *text-only* note. Anything with a logo,
+headshot, or graphic goes through the copy-paste route above.
+
+### Never send on his behalf
+
+Creating a draft is the ceiling, and only when he's asked for one. These go to
+his actual family and friends — he reviews and hits send himself, every time.
 
 ## Templates
 
@@ -160,13 +221,8 @@ The same rule applies to the invite **link**, used by
 
 Real data for a real send (real names, real links) goes in its own file under
 `local/` — e.g. `local/season-kickoff-2026.json` — never in a template's
-public example data. Render to `local/renders/`, same as invitations.
-
-For an email-format asset (`commissioner-letter`, `email-newsletter`), the
-finished HTML is what actually gets sent — via a Gmail draft if the Gmail
-connector is available, created for Henry to review and send himself.
-**Never call a send action.** Creating a draft that goes to Henry's whole
-league is as far as this skill goes without his explicit go-ahead each time.
+public example data. Render to `local/renders/`, same as invitations, then
+hand it off using the copy-paste route in **Delivering it** above.
 
 Henry is the commissioner and writes in the first person as "the Commissioner"
 when the piece needs a byline.

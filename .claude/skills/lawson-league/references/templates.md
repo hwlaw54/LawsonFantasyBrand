@@ -73,13 +73,25 @@ So `"streak": "L2"` renders red without you saying so. An explicit
 built the same way: tables and inline styles (Outlook ignores stylesheets, CSS
 variables, and flexbox), a light cream/white canvas with navy/gold as contained
 accent bands rather than a full-page background, and images by absolute GitHub
-**Pages** URL (`hwlaw54.github.io/LawsonFantasyBrand/...`) — never
-`raw.githubusercontent.com`, which sends security headers that make Gmail's
-image proxy silently fail to fetch through it. **Test in Gmail before
-sending**, ideally by sending a real draft to yourself, since Gmail's compose
-view has separately been shown to render backgrounds and images unreliably
-even when the delivered message is correct. Don't "modernise" either file back
-toward a dark full-bleed background — that's the bug that was fixed.
+**Pages** URL (`hwlaw54.github.io/LawsonFantasyBrand/...`).
+
+Two things about these that were learned the hard way:
+
+*Light canvas is deliberate.* These used to be dark navy with light text. Gmail
+strips `background-color` off `body`/`table` wrappers when it normalises pasted
+or injected HTML, which stranded pale text on a white page. A light canvas is
+legible no matter which backgrounds survive. Don't "modernise" either file back
+toward a dark full-bleed background — that's the bug that was fixed. Every
+background also carries a redundant `bgcolor` attribute for the same reason.
+
+*Delivery is copy-paste, not the Gmail connector.* The `create_draft` connector
+strips **every** `<img>` tag from the HTML body — confirmed by fetching a
+delivered message and finding both an external-URL image and a CID inline
+attachment had had their tags deleted outright. Hosting is not the variable;
+GitHub Pages vs. `raw.githubusercontent.com` made no difference, and an earlier
+note in this file claiming otherwise was wrong. Henry opens the rendered HTML
+in Chrome, Ctrl+A / Ctrl+C, and pastes into Gmail Compose, which brings the
+images in as inline attachments. See **Delivering it** in `SKILL.md`.
 
 **`standings`** — `_class` does real work here. Put `is-cut` on the *last* team
 that makes the playoffs; it draws the red line beneath them. Everything below
