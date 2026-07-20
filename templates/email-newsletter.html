@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
 <title>The Lawson Ledger</title>
 
 <!--
@@ -16,17 +18,36 @@
 
     · tables for layout, not divs
     · every style inline, no classes, no :root variables
-    · brand colours written as literal hex
+    · brand colours written as literal hex, PLUS a redundant `bgcolor` HTML
+      attribute alongside every background-color — some renderers strip one
+      and honor the other
     · images referenced by ABSOLUTE https URL, because an email has no
-      relative base — this is the reason the repo is public
+      relative base
     · SVG replaced with PNG; no mail client renders SVG reliably
     · webfonts declared with real fallbacks, since Outlook will use the
       fallback no matter what you do (Cinzel → Georgia, the rest → Arial)
 
+  LIGHT canvas, not a dark navy full-bleed background. This used to be dark
+  with light text and hit two real, separately-confirmed failures: Gmail's
+  compose editor strips background-color from body/table wrappers when
+  normalizing pasted HTML (so light text stranded itself on white), and even
+  after that was fixed, the masthead logo failed to load in an actual
+  DELIVERED message — no broken-image icon, no "images blocked" banner, it
+  just never rendered. A light body with dark navy text sidesteps the first
+  problem entirely (legible regardless of what background survives), and
+  navy/gold stay as CONTAINED accent bands (masthead, footer, card borders)
+  rather than the page background.
+
+  Images are hosted on GitHub PAGES (hwlaw54.github.io/LawsonFantasyBrand/...),
+  NOT raw.githubusercontent.com. That service is meant for developers pulling
+  source files — it sends unusual security headers (a sandboxed CSP,
+  X-Frame-Options: deny) and Gmail's server-side image proxy silently failed
+  to fetch through it in a real send. GitHub Pages serves the same repo
+  content through a normal static-hosting CDN and worked. See .nojekyll at
+  the repo root, required so Pages serves binary assets as-is.
+
   If you edit this, test in Gmail AND Outlook before sending. The other
   templates are for images and PDFs; this one is for the inbox.
-
-  Set IMG_BASE below to your repo's raw URL if you fork or rename.
 
   DATA CONTRACT — same as newsletter.html:
     week, issue_line, lede_eyebrow, lede_headline, lede_byline,
@@ -45,79 +66,68 @@
   }
 </style>
 </head>
-<body style="margin:0;padding:0;background-color:#081121;">
+<body style="margin:0;padding:0;background-color:#F4EEE1;" bgcolor="#F4EEE1">
 
 <!-- Preheader: shows in the inbox list, hidden in the body. -->
 <div style="display:none;max-height:0;overflow:hidden;opacity:0;">{{LEDE_HEADLINE}}</div>
 
-<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#081121;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F4EEE1;" bgcolor="#F4EEE1">
 <tr><td align="center" style="padding:24px 12px;">
 
-  <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background-color:#0a1424;">
+  <table role="presentation" class="container" width="600" cellpadding="0" cellspacing="0" border="0" style="width:600px;max-width:600px;background-color:#ffffff;" bgcolor="#ffffff">
 
-    <!-- ================= Masthead ================= -->
+    <!-- ================= Masthead — navy band, contained ================= -->
     <tr>
-      <td style="background-color:#10233F;padding:22px 28px;border-bottom:3px solid #C8A04B;">
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td width="52" valign="middle" style="width:52px;">
-            <img src="https://raw.githubusercontent.com/hwlaw54/LawsonFantasyBrand/main/assets/logo/png/monogram-badge-512.png"
-                 width="52" height="52" alt="Lawson League"
-                 style="display:block;width:52px;height:52px;border:0;">
-          </td>
-          <td valign="middle" style="padding-left:14px;">
-            <div style="font-family:Cinzel,Georgia,'Times New Roman',serif;font-weight:700;font-size:24px;color:#F4EEE1;line-height:1.15;">The Lawson Ledger</div>
-            <div style="font-family:'Barlow Condensed',Arial,sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#E0BD6D;padding-top:3px;">Weekly Dispatch of the Family &amp; Friends League</div>
-          </td>
-          <td valign="middle" align="right" style="font-family:Oswald,Arial,sans-serif;font-size:12px;color:#9aa0ab;">
-            <div style="color:#C8A04B;font-weight:600;">{{WEEK}}</div>
-            <div>{{ISSUE_LINE}}</div>
-          </td>
-        </tr>
-        </table>
+      <td style="background-color:#10233F;padding:24px 28px;border-bottom:3px solid #C8A04B;" bgcolor="#10233F">
+        <img src="https://hwlaw54.github.io/LawsonFantasyBrand/assets/logo/png/lockup-primary-1024.png"
+             width="240" height="77" alt="Lawson Family &amp; Friends Fantasy League"
+             style="display:block;max-width:240px;width:100%;height:auto;border:0;">
+        <div style="font-family:Cinzel,Georgia,'Times New Roman',serif;font-weight:700;font-size:20px;color:#F4EEE1;line-height:1.2;padding-top:14px;">The Lawson Ledger</div>
+        <div style="font-family:'Barlow Condensed',Arial,sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#E0BD6D;padding-top:3px;">Weekly Dispatch of the Family &amp; Friends League</div>
+        <div style="font-family:Oswald,Arial,sans-serif;font-weight:500;text-transform:uppercase;letter-spacing:1px;font-size:11px;color:#b9c0cc;padding-top:8px;">{{WEEK}} &nbsp;&middot;&nbsp; {{ISSUE_LINE}}</div>
       </td>
     </tr>
 
-    <!-- ================= Lede ================= -->
+    <!-- ================= Lede — dark text on white ================= -->
     <tr>
       <td class="px" style="padding:26px 28px 6px;">
-        <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:11px;color:#C8A04B;">{{LEDE_EYEBROW}}</div>
-        <h1 class="hl-mobile" style="font-family:Oswald,Arial,sans-serif;font-weight:600;text-transform:uppercase;color:#F4EEE1;font-size:30px;line-height:1.08;margin:8px 0 4px;">{{LEDE_HEADLINE}}</h1>
-        <div style="font-family:'Barlow Condensed',Arial,sans-serif;text-transform:uppercase;letter-spacing:1.2px;font-size:11px;color:#9aa0ab;padding-bottom:14px;">{{LEDE_BYLINE}}</div>
-        <p style="font-family:Barlow,Arial,sans-serif;font-size:15px;line-height:1.6;color:#d7dce4;margin:0 0 12px;">{{LEDE_BODY_1}}</p>
-        <p style="font-family:Barlow,Arial,sans-serif;font-size:15px;line-height:1.6;color:#d7dce4;margin:0;">{{LEDE_BODY_2}}</p>
+        <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:11px;color:#a8823a;">{{LEDE_EYEBROW}}</div>
+        <h1 class="hl-mobile" style="font-family:Oswald,Arial,sans-serif;font-weight:600;text-transform:uppercase;color:#10233F;font-size:30px;line-height:1.08;margin:8px 0 4px;">{{LEDE_HEADLINE}}</h1>
+        <div style="font-family:'Barlow Condensed',Arial,sans-serif;text-transform:uppercase;letter-spacing:1.2px;font-size:11px;color:#8a8f98;padding-bottom:14px;">{{LEDE_BYLINE}}</div>
+        <p style="font-family:Barlow,Arial,sans-serif;font-size:15px;line-height:1.6;color:#2a2f38;margin:0 0 12px;">{{LEDE_BODY_1}}</p>
+        <p style="font-family:Barlow,Arial,sans-serif;font-size:15px;line-height:1.6;color:#2a2f38;margin:0;">{{LEDE_BODY_2}}</p>
       </td>
     </tr>
 
-    <!-- ================= Three callouts ================= -->
+    <!-- ================= Three callouts — light cream cards ================= -->
     <tr>
       <td class="px" style="padding:20px 28px 0;">
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
         <tr>
           <td class="stack" width="33%" valign="top" style="padding-right:6px;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#122a4d;border-top:3px solid #C8A04B;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F4EEE1;border-top:3px solid #C8A04B;" bgcolor="#F4EEE1">
             <tr><td style="padding:14px 14px 16px;">
-              <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#C8A04B;">Top Dog</div>
-              <div style="font-family:Cinzel,Georgia,serif;font-weight:700;font-size:17px;color:#F4EEE1;padding:5px 0 3px;">{{TOP_TEAM}}</div>
-              <div style="font-family:Barlow,Arial,sans-serif;font-size:12px;color:#9aa0ab;line-height:1.4;">{{TOP_NOTE}}</div>
+              <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#a8823a;">Top Dog</div>
+              <div style="font-family:Cinzel,Georgia,serif;font-weight:700;font-size:17px;color:#10233F;padding:5px 0 3px;">{{TOP_TEAM}}</div>
+              <div style="font-family:Barlow,Arial,sans-serif;font-size:12px;color:#5a5f68;line-height:1.4;">{{TOP_NOTE}}</div>
             </td></tr>
             </table>
           </td>
           <td class="stack" width="33%" valign="top" style="padding:0 3px;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#122a4d;border-top:3px solid #B0303C;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F4EEE1;border-top:3px solid #B0303C;" bgcolor="#F4EEE1">
             <tr><td style="padding:14px 14px 16px;">
               <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#B0303C;">Biggest Fraud</div>
-              <div style="font-family:Cinzel,Georgia,serif;font-weight:700;font-size:17px;color:#F4EEE1;padding:5px 0 3px;">{{FRAUD_TEAM}}</div>
-              <div style="font-family:Barlow,Arial,sans-serif;font-size:12px;color:#9aa0ab;line-height:1.4;">{{FRAUD_NOTE}}</div>
+              <div style="font-family:Cinzel,Georgia,serif;font-weight:700;font-size:17px;color:#10233F;padding:5px 0 3px;">{{FRAUD_TEAM}}</div>
+              <div style="font-family:Barlow,Arial,sans-serif;font-size:12px;color:#5a5f68;line-height:1.4;">{{FRAUD_NOTE}}</div>
             </td></tr>
             </table>
           </td>
           <td class="stack" width="33%" valign="top" style="padding-left:6px;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#122a4d;border-top:3px solid #e6dcc6;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F4EEE1;border-top:3px solid #a8a094;" bgcolor="#F4EEE1">
             <tr><td style="padding:14px 14px 16px;">
-              <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#e6dcc6;">Stat Line</div>
-              <div style="font-family:Cinzel,Georgia,serif;font-weight:700;font-size:17px;color:#F4EEE1;padding:5px 0 3px;">{{STAT_VALUE}}</div>
-              <div style="font-family:Barlow,Arial,sans-serif;font-size:12px;color:#9aa0ab;line-height:1.4;">{{STAT_NOTE}}</div>
+              <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#8a8f98;">Stat Line</div>
+              <div style="font-family:Cinzel,Georgia,serif;font-weight:700;font-size:17px;color:#10233F;padding:5px 0 3px;">{{STAT_VALUE}}</div>
+              <div style="font-family:Barlow,Arial,sans-serif;font-size:12px;color:#5a5f68;line-height:1.4;">{{STAT_NOTE}}</div>
             </td></tr>
             </table>
           </td>
@@ -129,25 +139,25 @@
     <!-- ================= Scoreboard ================= -->
     <tr>
       <td class="px" style="padding:24px 28px 8px;">
-        <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:11px;color:#C8A04B;padding-bottom:8px;">Scoreboard · {{WEEK}}</div>
+        <div style="font-family:'Barlow Condensed',Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:11px;color:#a8823a;padding-bottom:8px;">Scoreboard · {{WEEK}}</div>
 
-        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#081121;">
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#F4EEE1;" bgcolor="#F4EEE1">
           <!-- REPEAT:matchup -->
           <tr>
-            <td style="padding:9px 12px;border-bottom:1px solid rgba(200,160,75,0.12);font-family:'Barlow Condensed',Arial,sans-serif;font-weight:600;font-size:14px;color:#F4EEE1;">{{WINNER}}</td>
-            <td align="right" style="padding:9px 4px;border-bottom:1px solid rgba(200,160,75,0.12);font-family:Oswald,Arial,sans-serif;font-weight:600;font-size:14px;color:#C8A04B;width:48px;">{{WINNER_SCORE}}</td>
-            <td align="center" style="padding:9px 6px;border-bottom:1px solid rgba(200,160,75,0.12);font-family:Barlow,Arial,sans-serif;font-size:10px;color:#6b7280;width:24px;">vs</td>
-            <td style="padding:9px 4px;border-bottom:1px solid rgba(200,160,75,0.12);font-family:Oswald,Arial,sans-serif;font-weight:600;font-size:14px;color:#9aa0ab;width:48px;">{{LOSER_SCORE}}</td>
-            <td align="right" style="padding:9px 12px;border-bottom:1px solid rgba(200,160,75,0.12);font-family:'Barlow Condensed',Arial,sans-serif;font-weight:600;font-size:14px;color:#9aa0ab;">{{LOSER}}</td>
+            <td style="padding:9px 12px;border-bottom:1px solid #e6dcc6;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:600;font-size:14px;color:#10233F;">{{WINNER}}</td>
+            <td align="right" style="padding:9px 4px;border-bottom:1px solid #e6dcc6;font-family:Oswald,Arial,sans-serif;font-weight:600;font-size:14px;color:#a8823a;width:48px;">{{WINNER_SCORE}}</td>
+            <td align="center" style="padding:9px 6px;border-bottom:1px solid #e6dcc6;font-family:Barlow,Arial,sans-serif;font-size:10px;color:#8a8f98;width:24px;">vs</td>
+            <td style="padding:9px 4px;border-bottom:1px solid #e6dcc6;font-family:Oswald,Arial,sans-serif;font-weight:600;font-size:14px;color:#6b7280;width:48px;">{{LOSER_SCORE}}</td>
+            <td align="right" style="padding:9px 12px;border-bottom:1px solid #e6dcc6;font-family:'Barlow Condensed',Arial,sans-serif;font-weight:600;font-size:14px;color:#6b7280;">{{LOSER}}</td>
           </tr>
           <!-- /REPEAT:matchup -->
         </table>
       </td>
     </tr>
 
-    <!-- ================= Footer ================= -->
+    <!-- ================= Footer — navy band, contained ================= -->
     <tr>
-      <td align="center" style="background-color:#10233F;padding:16px 28px;border-top:1px solid rgba(200,160,75,0.28);font-family:'Barlow Condensed',Arial,sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#9aa0ab;">
+      <td align="center" style="background-color:#10233F;padding:16px 28px;border-top:3px solid #C8A04B;font-family:'Barlow Condensed',Arial,sans-serif;text-transform:uppercase;letter-spacing:2px;font-size:10px;color:#b9c0cc;" bgcolor="#10233F">
         {{FOOTER_LINE}}
       </td>
     </tr>

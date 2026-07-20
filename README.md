@@ -132,12 +132,23 @@ node scripts/render.js chat-card data/example-chat-cards.json --png
 
 ## Using the assets elsewhere
 
-Because this repo is public, any file works as a direct URL — which is how the
-email template embeds the logo:
+Because this repo is public, any file works as a direct URL via **GitHub
+Pages** — which is how the email templates embed the logo:
 
 ```
-https://raw.githubusercontent.com/hwlaw54/LawsonFantasyBrand/main/assets/logo/png/crest-full-512.png
+https://hwlaw54.github.io/LawsonFantasyBrand/assets/logo/png/crest-full-512.png
 ```
+
+Requires GitHub Pages enabled once, in the repo's Settings → Pages → Source:
+Deploy from a branch → `main` / `(root)`.
+
+Don't use `raw.githubusercontent.com` for this. It's meant for developers
+pulling source files, not for hosting production images: it sends unusual
+security headers, and Gmail's server-side image proxy failed to fetch through
+it in a real, delivered send — no broken-image icon, nothing, the image just
+never showed up. GitHub Pages serves the same content through a normal
+static-hosting CDN and works. See `.nojekyll` at the repo root, required so
+Pages serves binary assets as-is instead of running them through Jekyll.
 
 ## Scripts
 

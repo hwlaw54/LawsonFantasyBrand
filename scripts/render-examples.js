@@ -28,6 +28,7 @@ const JOBS = [
   ['awards', 'example-awards.json'],
   ['season-wrap', 'example-season-wrap.json'],
   ['chat-card', 'example-chat-cards.json'],
+  ['commissioner-letter', 'example-commissioner-letter.json'],
 ];
 
 let failed = false;

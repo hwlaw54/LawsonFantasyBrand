@@ -69,11 +69,17 @@ So `"streak": "L2"` renders red without you saying so. An explicit
 **`newsletter`** — needs both `lede_headline_HTML` (with the `<br>`) and a plain
 `lede_headline`; the email edition uses the plain one as inbox preview text.
 
-**`email-newsletter`** — takes the *same* data file as `newsletter`. Built with
-tables and inline styles because Outlook ignores stylesheets, CSS variables, and
-flexbox. Images point at absolute `raw.githubusercontent.com` URLs, which is why
-the repo is public. **Test in Gmail and Outlook before sending.** Don't
-"modernise" this file.
+**`email-newsletter`**, **`commissioner-letter`** — email-format templates, both
+built the same way: tables and inline styles (Outlook ignores stylesheets, CSS
+variables, and flexbox), a light cream/white canvas with navy/gold as contained
+accent bands rather than a full-page background, and images by absolute GitHub
+**Pages** URL (`hwlaw54.github.io/LawsonFantasyBrand/...`) — never
+`raw.githubusercontent.com`, which sends security headers that make Gmail's
+image proxy silently fail to fetch through it. **Test in Gmail before
+sending**, ideally by sending a real draft to yourself, since Gmail's compose
+view has separately been shown to render backgrounds and images unreliably
+even when the delivered message is correct. Don't "modernise" either file back
+toward a dark full-bleed background — that's the bug that was fixed.
 
 **`standings`** — `_class` does real work here. Put `is-cut` on the *last* team
 that makes the playoffs; it draws the red line beneath them. Everything below
